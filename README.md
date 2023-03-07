@@ -1,18 +1,20 @@
-## Getting Started
+# Aulas de lp1
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+repositório destinado aos conteúdos de linguagem de programação 1.
 
-## Folder Structure
+## conteúdos 
 
-The workspace contains two folders by default, where:
+- semana1
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    - apresentação de disciplina
+    - JDK, JRE, javac e java
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- semana2
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+    - controle de versão
+    - git e github
 
-## Dependency Management
+- semana3
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    - criação de projetos java
+    - introdução a linguagem java
