@@ -21,4 +21,12 @@ repositório destinado aos conteúdos de linguagem de programação 1.
 
 - semana4
 
-    -
+    - estruturas de controle
+
+- semana5
+
+    - exercicios
+
+- semana6
+
+    - metodos e seus testes

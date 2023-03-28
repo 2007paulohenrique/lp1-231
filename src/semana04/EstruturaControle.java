@@ -82,6 +82,7 @@ public class EstruturaControle {
             System.out.println(nota);
         }
 
+        
 
                 }
             }
