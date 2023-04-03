@@ -9,9 +9,9 @@ public class Exercicio2 {
     
     }
 
-    public static String classificacao(double imc) {
+    public static String classificar(double imc) {
         String classe;
-        if(imc < 18.5){
+        if(imc < 18.5 && imc > 0.0){
             classe = ("baixo peso");
 
         } else if (imc >= 18.5 && imc < 25){

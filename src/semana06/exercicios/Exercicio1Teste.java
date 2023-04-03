@@ -8,15 +8,15 @@ public class Exercicio1Teste {
 
     @Test
 
-    public void multiplicarTresNumerosEDividirPorMil() {
+    public void calcularVolumeEDividirPorMil() {
         
         double altura = 10;
         double largura = 10;
         double comprimento = 10;
 
-        double multiplicacao = Exercicio1.calcularVolume(altura, largura, comprimento);
+        double volume = Exercicio1.calcularVolume(altura, largura, comprimento);
 
-        assertEquals(1, multiplicacao);
+        assertEquals(1, volume);
 
     }
 
@@ -28,9 +28,9 @@ public class Exercicio1Teste {
         double tempdesejada = 25;
         double temp = 20;
 
-        double calpotencia = volume*0.05*(tempdesejada-temp);
+        double potencia = Exercicio1.CalcularPotencia(volume, tempdesejada, temp);
 
-        assertEquals(5, calpotencia);
+        assertEquals(5, potencia);
 
     }
 
@@ -40,21 +40,9 @@ public class Exercicio1Teste {
         
         double volume = 50;
 
-        double filtragem1 = volume*2;
+        String filtragem = Exercicio1.calcularFiltragem(volume);
 
-        assertEquals(100, filtragem1);
-
-    }
-
-    @Test
-
-    public void CalcularFiltragem2() {
-        
-        double volume = 50;
-
-        double filtragem2 = volume*3;
-
-        assertEquals(150, filtragem2);
+        assertEquals(("a filtragem deve ser de " + 100.0 + " a " + 150.0 + " litros por hora"), filtragem);
 
     }
     
