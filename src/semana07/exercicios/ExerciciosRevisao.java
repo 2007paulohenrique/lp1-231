@@ -57,7 +57,11 @@ public class ExerciciosRevisao {
     }
 
     public static double somarValores(double[] numero) {
-        return numero[0] + numero[1] + numero[2];
+        double soma = 0;
+        for (int i = 0; i < numero.length; i++) {
+            soma += numero[i];
+        }
+        return soma;
         
     }
 
@@ -69,7 +73,7 @@ public class ExerciciosRevisao {
     public static double pegarMenorValorArray(double[] numero) {
         double menor = numero[0];
         for (int i = 1; i < numero.length; i++) {
-            if (numero[1] > menor) {
+            if (numero[1] < menor) {
                 menor = numero[i];
             }
         }
@@ -87,9 +91,19 @@ public class ExerciciosRevisao {
     }
 
     public static int[] retornarValoresDeDoisArrays(int[] array1, int[] array2) {
-        int[] valores = new int[array1.length + array2.length];
-        return valores;
+        int[] resultado = new int[array1.length + array2.length];
+        int indice = 0;
+        for (int valor : array1) {
+            resultado[indice] = valor;
+            indice++;
+        }
+        for (int valor : array2) {
+            resultado[indice] = valor;
+            indice++;
+        }
+        return resultado;
     }
+    
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

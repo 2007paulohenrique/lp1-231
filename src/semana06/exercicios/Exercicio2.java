@@ -60,7 +60,7 @@ public class Exercicio2 {
         double peso = sc.nextDouble();
         double altura = sc.nextDouble();
         double imc = calcularIMC(peso, altura);
-        System.out.println("sua classificacao de acordo com seu imc e:" + classificacao(imc));
+        System.out.println("sua classificacao de acordo com seu imc e:" + classificar(imc));
 
         System.out.println(calcularPesoAPerderOuGanhar(imc, peso, altura));
     }

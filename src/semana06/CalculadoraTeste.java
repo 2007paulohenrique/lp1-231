@@ -127,7 +127,7 @@ public class CalculadoraTeste {
 
     }
 
-    @Test@Test
+    @Test
     public void dividirDoisNumeros() {
     
         double numero1 = 10.0;
