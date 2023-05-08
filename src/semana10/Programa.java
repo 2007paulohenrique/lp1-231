@@ -57,5 +57,18 @@ public class Programa {
 
         System.out.println(cir1.calcularArea());
         System.out.println(cir1.calcularPerimetro());
+
+        Triangulos triangulo1 = new Triangulos();
+
+        triangulo1.lado[0] = 5;
+        triangulo1.lado[1] = 10;
+        triangulo1.lado[2] = 15;
+        triangulo1.radiangulo_entre_ladomaiorebase_escaleno = 1.05;
+
+        System.out.println(triangulo1.definirBase());
+        System.out.println(triangulo1.calcularAltura());
+        System.out.println(triangulo1.calcularPerimetro());
+        System.out.println(triangulo1.calcularArea());
+
     }
 }
