@@ -30,3 +30,15 @@ repositório destinado aos conteúdos de linguagem de programação 1.
 - semana6
 
     - metodos e seus testes
+
+- semana7
+
+    - exercicios de revisão
+
+- semana8 e semana9
+
+    - nd
+
+- semana10
+
+    - criação de classes

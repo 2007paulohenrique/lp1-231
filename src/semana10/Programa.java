@@ -45,6 +45,17 @@ public class Programa {
 
         System.out.println(ret2.calcularArea());
         System.out.println(ret2.calcularPerimetro());
-        
+
+        Quadrado qua1 = new Quadrado();
+        qua1.lado = 10;
+
+        System.out.println(qua1.calcularArea());
+        System.out.println(qua1.calcularPerimetro());
+
+        Circulo cir1 = new Circulo();
+        cir1.raio = 5;
+
+        System.out.println(cir1.calcularArea());
+        System.out.println(cir1.calcularPerimetro());
     }
 }
