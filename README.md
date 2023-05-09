@@ -42,3 +42,7 @@ repositório destinado aos conteúdos de linguagem de programação 1.
 - semana10
 
     - criação de classes
+
+- semana11
+
+    - exercicios

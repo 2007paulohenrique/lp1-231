@@ -2,7 +2,7 @@ package semana10;
 
 public class Triangulos {
     public double[] lado = new double[3];
-    public double radiangulo_entre_ladomaiorebase_escaleno;
+    public double angulo_entre_ladomaiorebase_escaleno;
 
     public String classificarTriangulo(){
         if (lado[0] == lado[1] && lado[1] == lado[2]) {
@@ -68,28 +68,28 @@ public class Triangulos {
         } else {
             if (lado[0] == definirBase()) {
                 if (lado[1] > lado[2]) {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[1];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[1];
 
                 } else {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[2];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[2];
 
                 }
                 
             } else if (lado[1] == definirBase()) {
                 if (lado[0] > lado[2]) {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[0];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[0];
 
                 } else {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[2];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[2];
 
                 }
                 
             } else {
                 if (lado[0] > lado[1]) {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[0];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[0];
 
                 } else {
-                    return Math.sin(radiangulo_entre_ladomaiorebase_escaleno)*lado[1];
+                    return Math.sin(Math.toRadians(angulo_entre_ladomaiorebase_escaleno))*lado[1];
 
                 }
                 

@@ -4,10 +4,10 @@ public class Circulo {
     public double raio;
 
     public double calcularArea() {
-        return 3.14*(raio*raio);
+        return Math.PI*(raio*raio);
     }
 
     public double calcularPerimetro() {
-        return 2*3.14*raio;
+        return 2*Math.PI*raio;
     }
 }
