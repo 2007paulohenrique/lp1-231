@@ -4,6 +4,15 @@ public class Triangulos {
     public double[] lado = new double[3];
     public double angulo_entre_ladomaiorebase_escaleno;
 
+    public boolean conferirTriangulo() {
+        if (lado[0] > Math.abs(lado[1]-lado[2]) && lado[0] < lado[1] + lado[2]) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     public String classificarTriangulo(){
         if (lado[0] == lado[1] && lado[1] == lado[2]) {
             return "equilatero";
