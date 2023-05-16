@@ -46,3 +46,7 @@ repositório destinado aos conteúdos de linguagem de programação 1.
 - semana11
 
     - exercicios
+
+- semana12
+
+    - metodos construtores

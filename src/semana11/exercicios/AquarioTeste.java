@@ -8,6 +8,27 @@ import org.junit.jupiter.api.Test;
 public class AquarioTeste {
     @Test
 
+    public void testarConstrutor1() {
+        Aquario aquario = new Aquario();
+
+        double volume = aquario.calcularVolumeEmMetros();
+
+        assertEquals(1, volume);
+    }
+
+    public void testarConstrutor2() {
+        Aquario aquario = new Aquario();
+        aquario.alturacm = 100;
+        aquario.comprimentocm = 100;
+        aquario.larguracm = 100;
+
+        double volume = aquario.calcularVolumeEmMetros();
+
+        assertEquals(1, volume);
+    }
+
+    @Test
+
     public void calcularVolume() {
         Aquario aquario = new Aquario();
         aquario.alturacm = 100;
