@@ -1,6 +1,14 @@
 package semana10;
 
 public class Triangulos {
+
+    public Triangulos(double lado1, double lado2, double lado3){
+        lado[0]=lado1;
+        lado[1]=lado2;
+        lado[2]=lado3;    
+
+    }
+
     public double[] lado = new double[3];
     public double angulo_entre_ladomaiorebase_escaleno;
 
