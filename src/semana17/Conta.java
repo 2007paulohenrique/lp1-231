@@ -1,14 +1,15 @@
 package semana17;
 
-public class Conta {
+public abstract class Conta {
     protected double saldo;
     protected double tarifa;
 
-    public Conta(double tarifa){
+    public Conta(double tarifa, Correntista correntista){
         if (tarifa<0) {
             throw new RuntimeException("somente valores positivos");
         }
         this.tarifa=tarifa;
+        correntista.addConta(this);
         saldo=0;
     }
 
