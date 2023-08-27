@@ -31,6 +31,14 @@ public abstract class Questao {
         }
     }
 
+    public double getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(double pontos) {
+        this.pontos = pontos;
+    }
+
     public String getEnunciado() {
         return enunciado;
     }
