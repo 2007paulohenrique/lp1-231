@@ -9,7 +9,7 @@ public class MultiplaEscolha extends Questao{
         super(numero, enunciado, prova, pontos);
     }
 
-    public void selecionarAlternativasCorretas(Alternativa alternativa){
+    public void selecionarAlternativasCertas(Alternativa alternativa){
         alternativasCertas.add(alternativa);
     }
     

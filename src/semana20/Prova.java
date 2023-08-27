@@ -3,9 +3,9 @@ package semana20;
 import java.util.List;
 
 public class Prova {
-    protected List<Questao> questoes;
-    protected int pontuacao;
-    protected int valorMaximo;
+    private List<Questao> questoes;
+    private int pontuacao;
+    private int valorMaximo;
 
     public Prova(int valorMaximo){
         setValorMaximo(valorMaximo);

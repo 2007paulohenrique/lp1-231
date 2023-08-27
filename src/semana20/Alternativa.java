@@ -2,10 +2,10 @@ package semana20;
 
 public class Alternativa {
     private int numero;
-    private int afirmacao;
+    private String afirmacao;
     private Questao questao;
 
-    public Alternativa(int numero, int afirmacao, Questao questao){
+    public Alternativa(int numero, String afirmacao, Questao questao){
         setNumero(numero);
         this.afirmacao=afirmacao;
         questao.addAlternativa(this);
@@ -22,11 +22,11 @@ public class Alternativa {
         this.numero = numero;
     }
 
-    public int getAfirmacao() {
+    public String getAfirmacao() {
         return afirmacao;
     }
 
-    public void setAfirmacao(int afirmacao) {
+    public void setAfirmacao(String afirmacao) {
         this.afirmacao = afirmacao;
     }
 }
