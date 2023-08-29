@@ -4,18 +4,15 @@ import java.util.List;
 
 public class Prova {
     private List<Questao> questoes;
-    private int pontuacao;
-    private int valorMaximo;
-
-    public Prova(int valorMaximo){
-        setValorMaximo(valorMaximo);
-    }
+    private double pontuacao;
+    private double pontuacaoMaxima;
 
     public void addQuestao(Questao questao){
-        this.questoes.add(questao);
+        questoes.add(questao);
     }
 
     public double calcularPontuacao() {
+        pontuacao=0;
         for (Questao questao : questoes) {
             if (questao.correcao = true) {
                 pontuacao+=questao.pontos;
@@ -24,21 +21,11 @@ public class Prova {
         return pontuacao;
     }    
 
-    public double calcularMaximoDaPontuacao() {
+    public double calcularPontuacaoMaxima() {
+        pontuacaoMaxima=0;
         for (Questao questao : questoes) {
-                pontuacao+=questao.pontos;
+                pontuacaoMaxima+=questao.pontos;
         }
-        return pontuacao;
+        return pontuacaoMaxima;
     }    
-
-    public int getValorMaximo() {
-        return valorMaximo;
-    }
-
-    public void setValorMaximo(int valorMaximo) {
-        if (valorMaximo < 1 && calcularMaximoDaPontuacao() > valorMaximo) {
-            throw new RuntimeException("coloque somente valores positivos e que sejam maiores do que a soma da pontuacao das questoes");
-        }
-    }
-
 }

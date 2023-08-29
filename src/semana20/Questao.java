@@ -18,7 +18,7 @@ public abstract class Questao {
     }
 
     public void addAlternativa(Alternativa alternativa){
-        this.alternativas.add(alternativa);
+        alternativas.add(alternativa);
     }
 
     public int getNumero() {
