@@ -1,7 +1,5 @@
 package semana07.exercicios;
 
-import java.lang.reflect.Array;
-import java.util.Scanner;
 
 public class ExerciciosRevisao {
 
@@ -106,7 +104,7 @@ public class ExerciciosRevisao {
     
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
 
         double n1= 2.5;
         double n2= 5.5;

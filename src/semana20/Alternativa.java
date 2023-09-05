@@ -3,7 +3,7 @@ package semana20;
 public class Alternativa {
     private int numero;
     private String afirmacao;
-    private Questao questao;
+    //private Questao questao;
 
     public Alternativa(int numero, String afirmacao, Questao questao){
         setNumero(numero);

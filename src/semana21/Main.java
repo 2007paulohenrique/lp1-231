@@ -46,7 +46,7 @@ public class Main {
         System.out.println(nomes.get(1));
 
         for (int i = 0; i < nomes.size(); i++) {
-            String nome = nomes.get(i);
+            //String nome = nomes.get(i);
         }
     }
 }

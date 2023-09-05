@@ -11,24 +11,24 @@ public class Introducao{
         //inteiro
         //byte, short, int, long
 
-        byte n1 = 100; //-128 a 127 - 1 byte
-        short n2 = 3000; //-32768 a 32767 - 2 bytes
-        int n3 = 43453453; //2 bilhões - 4 bytes
-        long n4 = 53453452; //8 bytes
+        //byte n1 = 100; //-128 a 127 - 1 byte
+        //short n2 = 3000; //-32768 a 32767 - 2 bytes
+        //int n3 = 43453453; //2 bilhões - 4 bytes
+        //long n4 = 53453452; //8 bytes
 
         //ponto flutuante
 
-        float nota1 = 1.232f;
-        double nota2 = 2.534252;
+        //float nota1 = 1.232f;
+        //double nota2 = 2.534252;
 
         //char
 
-        char letra = 'a';
+        //char letra = 'a';
 
         //boolean
 
-        boolean ligado = true;
-        boolean teste = false;
+        //boolean ligado = true;
+        //boolean teste = false;
 
         //string
 
@@ -41,10 +41,10 @@ public class Introducao{
 
         //variaveis e constantes
 
-        int idade = 10;
-        int idade2;
+        //int idade = 10;
+        //int idade2;
 
-        final double nmr = 10.1;
+        //double nmr = 10.1;
 
         //entrada e saida de dados
         //entrada= scanner

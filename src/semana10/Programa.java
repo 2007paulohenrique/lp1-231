@@ -29,7 +29,7 @@ public class Programa {
         System.out.println(calcularPerimetro(base2, altura2));
 
         //tipo, nome , valor
-        String nome = "abc";
+        //String nome = "abc";
 
         //objeto ou instancia da classe Retangulo
         Retangulo ret1 = new Retangulo();
