@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 public class ListarTodosAlunos {
     public static void main(String[] args) throws SQLException{
-        String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
+        String url = "jdbc:mysql://localhost/semana22?user=root?password=NULL";
         Connection conn = DriverManager.getConnection(url);
 
         String sql = "SELECT* FROM alunos;";
@@ -33,5 +33,6 @@ public class ListarTodosAlunos {
         }
 
         conn.close();
+        stm.close();
     }
 }

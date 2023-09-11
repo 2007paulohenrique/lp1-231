@@ -20,6 +20,7 @@ public class InserirAluno {
 
         String sql = "INSERT INTO alunos VALUES(?,?,?,?)";
         PreparedStatement pstm = conn.prepareStatement(sql);
+        
         pstm.setInt(1, id);
         pstm.setString(2, nome);
         pstm.setString(3, email);
