@@ -20,7 +20,7 @@ public class Main {
         //executar a consulta sql
         //fechar a conexao
 
-        String url = "jdbc:mysql://localhost/semana22?user=root?password=NO";
+        String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
         Connection conn = DriverManager.getConnection(url);
 
         String sql = "CREATE TABLE alunos(id INT PRIMARY KEY, nome TEXT, email TEXT, ativo BOOL);";

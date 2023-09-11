@@ -18,6 +18,6 @@ public class Ex02 {
         double media = (n1+n2+n3)/3;
 
         System.out.println("media = " + media);
-
+        sc.close();
     }
 }

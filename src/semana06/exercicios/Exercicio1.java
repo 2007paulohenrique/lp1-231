@@ -27,6 +27,6 @@ public class Exercicio1 {
         double potencia = CalcularPotencia(volume, sc.nextDouble(), sc.nextDouble());
         System.out.println("a potencia do termostato recomendada e de :" + potencia + "watts");
         System.out.println(calcularFiltragem(volume));
-
+        sc.close();
         }
     }

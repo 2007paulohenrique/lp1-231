@@ -56,6 +56,6 @@ public class Ex2 {
             System.out.println("voce esta no peso normal");
 
         }
-
+        sc.close();
     }
 }

@@ -29,5 +29,6 @@ public class Ex04 {
             System.out.println("codigo valido");
 
         }
+        sc.close();
     }
 }

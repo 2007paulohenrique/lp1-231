@@ -63,5 +63,6 @@ public class Exercicio2 {
         System.out.println("sua classificacao de acordo com seu imc e:" + classificar(imc));
 
         System.out.println(calcularPesoAPerderOuGanhar(imc, peso, altura));
+        sc.close();
     }
 }

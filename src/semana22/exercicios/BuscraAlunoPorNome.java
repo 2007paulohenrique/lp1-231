@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class BuscraAlunoPorNome {
     public static void main(String[] args) throws SQLException{
-        String url = "jdbc:mysql://localhost/estudante%20ti?user=root";
+        String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
         Connection conn = DriverManager.getConnection(url);
 
         Scanner sc = new Scanner(System.in);
@@ -23,6 +23,7 @@ public class BuscraAlunoPorNome {
 
 
         int id = rs.getInt("id");
+        nome = rs.getString("nome");
         String email = rs.getString("email");
         boolean ativo = rs.getBoolean("ativo");
 
@@ -30,5 +31,9 @@ public class BuscraAlunoPorNome {
         System.out.println(nome);
         System.out.println(email);
         System.out.println(ativo);
+
+        pstm.close();
+        conn.close();
+        sc.close();
     }
 }

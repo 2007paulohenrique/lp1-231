@@ -17,6 +17,6 @@ public class Ex01 {
 
         System.out.println("antecessor: " + ant);
         System.out.println("sucessor: " + suc);
-        
+        sc.close();
     }
 }

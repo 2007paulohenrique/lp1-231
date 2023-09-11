@@ -34,6 +34,6 @@ public class Ex03 {
 
         System.out.println("valor final: " + valor);
         System.out.println("desconto: " + desconto + "%");
-
+        sc.close();
     }
 }

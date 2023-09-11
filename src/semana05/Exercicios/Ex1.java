@@ -34,7 +34,7 @@ public class Ex1 {
         System.out.println("a potencia do termostato recomendada e de :" + potencia + "watts");
         System.out.println("a filtragem do aquario deve ser de " + filt1 + " a " + filt2 + " litros por hora");
 
-
+        sc.close();
     }
     
 } 
