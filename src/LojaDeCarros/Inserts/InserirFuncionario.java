@@ -19,6 +19,8 @@ public class InserirFuncionario{
         System.out.println("Digite o ID do cargo: ");
         int id_cargo = sc.nextInt();
 
+        sc.nextLine();
+
         System.out.println("Digite o nome do funcionario: ");
         String nome = sc.nextLine();
 
@@ -30,6 +32,8 @@ public class InserirFuncionario{
 
         System.out.println("Digite seu CPF: ");
         int cpf = sc.nextInt();
+
+        sc.nextLine();
 
         System.out.println("Digite a data de nascimento do funcionario (aaaa-mm-dd): ");
         String data_nascimento = sc.nextLine();

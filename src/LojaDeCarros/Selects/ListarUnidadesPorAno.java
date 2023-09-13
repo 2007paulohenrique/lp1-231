@@ -41,11 +41,10 @@ public class ListarUnidadesPorAno {
                 System.out.println(placa);
                 System.out.println(quilometragem);
                 System.out.println(valor_unitario);
-
-                pstm.close();
-                conn.close();
-                sc.close();
             }
         }
+        pstm.close();
+        conn.close();
+        sc.close();
     }
 }

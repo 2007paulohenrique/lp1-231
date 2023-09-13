@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Scanner;
 import java.sql.PreparedStatement;
 
@@ -14,12 +13,12 @@ public class ListarVendasPorDia {
         Connection conn = DriverManager.getConnection(url);
 
         Scanner sc = new Scanner(System.in);
-		System.out.println("Digite o dia que deseja para listar todas as vendas que ocorreram nele: ");
-		int dia = sc.nextInt();
+		System.out.println("Digite o dia que deseja para listar todas as vendas que ocorreram nele (aaaa-mm-dd): ");
+		String dia = sc.nextLine();
 
         String sql = "SELECT * FROM venda WHERE DATE(dia_horario) = ?";
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, dia);
+        pstm.setString(1, dia);
         ResultSet rs = pstm.executeQuery(sql);
 
         while(rs.next()){
@@ -29,7 +28,7 @@ public class ListarVendasPorDia {
             int idFormaDePagamento = rs.getInt("id_forma_pagamento");
             double desconto = rs.getDouble("desconto");
             int parcelas = rs.getInt("parcelas");
-            double juros = rs.getDouble("juros");
+            int juros = rs.getInt("juros");
             
             System.out.println(id);
             System.out.println(idFuncionario);
@@ -39,5 +38,8 @@ public class ListarVendasPorDia {
             System.out.println(parcelas);
             System.out.println(juros);
         }
+        pstm.close();
+        conn.close();
+        sc.close();
     }
 }

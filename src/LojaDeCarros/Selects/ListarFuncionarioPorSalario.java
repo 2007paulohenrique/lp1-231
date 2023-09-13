@@ -15,11 +15,11 @@ public class ListarFuncionarioPorSalario {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o salário pelo qual desejas buscar: ");
-		double salario = sc.nextDouble();
+		double salario_fixo = sc.nextDouble();
 
 		String sql = "SELECT * FROM funcionario WHERE salario_fixo = ?";
 		PreparedStatement pstm = conn.prepareStatement(sql);
-		pstm.setDouble(1, salario);
+		pstm.setDouble(1, salario_fixo);
         ResultSet rs = pstm.executeQuery();
 
         while(rs.next()){
@@ -29,10 +29,10 @@ public class ListarFuncionarioPorSalario {
             String email = rs.getString("email");
             String contato = rs.getString("contato");
             String cpf = rs.getString("cpf");
-            Timestamp data_nascimento = rs.getTimestamp("data_nascimento");
+            String data_nascimento = rs.getString("data_nascimento");
             String endereco =  rs.getString("endereco");
             String complemento = rs.getString("complemento");
-            double salario_fixo = rs.getDouble("salario_fixo");
+            salario_fixo = rs.getDouble("salario_fixo");
             int comissao = rs.getInt("comissao");
             
             System.out.println(id);
@@ -46,10 +46,9 @@ public class ListarFuncionarioPorSalario {
             System.out.println(complemento);
             System.out.println(salario_fixo);
             System.out.println(comissao);
-
-            pstm.close();
-            conn.close();
-            sc.close();
         }
+        pstm.close();
+        conn.close();
+        sc.close();
     }
 }

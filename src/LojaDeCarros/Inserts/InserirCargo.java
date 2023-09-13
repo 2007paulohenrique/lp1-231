@@ -16,6 +16,8 @@ public class InserirCargo {
         System.out.println("Digite o ID do cargo a ser inserido: ");
         int id = sc.nextInt();
 
+        sc.nextLine();
+
         System.out.println("Digite o nome do cargo: ");
         String nome = sc.nextLine();
 

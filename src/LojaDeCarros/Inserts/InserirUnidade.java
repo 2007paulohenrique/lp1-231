@@ -28,6 +28,8 @@ public class InserirUnidade {
         System.out.println("Digite o ano de fabricacao da unidade ");
         int ano = sc.nextInt();
 
+        sc.nextLine();
+
         System.out.println("Digite a placa do carro: ");
         String placa = sc.nextLine();
 
@@ -35,7 +37,7 @@ public class InserirUnidade {
         int quilometragem = sc.nextInt();
 
         System.out.println("Digite o valor unitário do carro: ");
-        int valor_unitario = sc.nextInt();
+        double valor_unitario = sc.nextInt();
 
         boolean disponibilidade = true;
 
@@ -48,8 +50,9 @@ public class InserirUnidade {
         pstm.setInt(5, ano);
         pstm.setString(6, placa);
         pstm.setInt(7, quilometragem);
-        pstm.setInt(8, valor_unitario);
+        pstm.setDouble(8, valor_unitario);
         pstm.setBoolean(9, disponibilidade);
+        pstm.executeUpdate();
 
         pstm.close();
         conn.close();
