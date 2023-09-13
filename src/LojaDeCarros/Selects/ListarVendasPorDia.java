@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 
 public class ListarVendasPorDia {
     public static void main(String[] args) throws SQLException{
-        String url = "jdbc:mysql://localhost/jdbcdemo?user=root&password=0000&useSSL=true";
+        String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
         Connection conn = DriverManager.getConnection(url);
 
         Scanner sc = new Scanner(System.in);

@@ -1,6 +1,5 @@
 package LojaDeCarros.Selects;
 
-import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 
 public class ListarFuncionarioPorSalario {
     public static void main(String[] args) throws SQLException{
-		String url = "jdbc:mysql://localhost/lojadecarros?user=root&password=0000&useSSL=true";
+		String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
 		Connection conn = DriverManager.getConnection(url);
 
 		Scanner sc = new Scanner(System.in);
