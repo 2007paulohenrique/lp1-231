@@ -12,6 +12,10 @@ public class CategoriaCor {
         this.nome = nome;
     }
 
+    public CategoriaCor(String nome) {
+        this.nome = nome;
+    }
+
     public void addCor(Cor cor){
         cores.add(cor);
     }

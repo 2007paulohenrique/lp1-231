@@ -9,6 +9,10 @@ public class FormaDePagamento {
         this.nome = nome;
     }
 
+    public FormaDePagamento(String nome) {
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }

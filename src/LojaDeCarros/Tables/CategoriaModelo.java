@@ -12,6 +12,10 @@ public class CategoriaModelo {
         this.nome = nome;
     }
 
+    public CategoriaModelo(int nome) {
+        this.nome = nome;
+    }
+
     public void addModelo(Modelo modelo){
         modelos.add(modelo);
     }
@@ -27,5 +31,4 @@ public class CategoriaModelo {
     public void setNome(int nome) {
         this.nome = nome;
     }
-    
 }

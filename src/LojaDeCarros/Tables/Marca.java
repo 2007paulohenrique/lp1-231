@@ -12,6 +12,10 @@ public class Marca {
         this.nome = nome;
     }
 
+    public Marca(String nome) {
+        this.nome = nome;
+    }
+
     public void addModelo(Modelo modelo){
         modelos.add(modelo);
     }
@@ -27,5 +31,4 @@ public class Marca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 }
