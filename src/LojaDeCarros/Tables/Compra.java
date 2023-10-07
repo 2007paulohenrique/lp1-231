@@ -1,29 +1,31 @@
 package LojaDeCarros.Tables;
 
 import java.util.Date;
-import java.util.List;
 
 public class Compra {
     private int id;
     private Funcionario funcionario;
     private Cliente cliente;
-    private List<Unidade> unidades;
+    private Unidade unidade;
     private Date dia_horario;
 
-    public Compra(int id, Funcionario funcionario, Cliente cliente, Date dia_horario) {
+    public Compra(int id, Funcionario funcionario, Cliente cliente, Unidade unidade, Date dia_horario) {
         this.id = id;
         this.funcionario = funcionario;
         this.cliente = cliente;
+        this.unidade = unidade;
         this.dia_horario = dia_horario;
+        cliente.addVendaCliente(this);
         funcionario.addCompra(this);
-        cliente.addVenda(this);
-        for (Unidade unidade : unidades) {
-            unidade.addCompra(this);
-        }
     }
 
-    public void addUnidade(Unidade unidade){
-        unidades.add(unidade);
+    public Compra(Funcionario funcionario, Cliente cliente, Unidade unidade, Date dia_horario) {
+        this.funcionario = funcionario;
+        this.cliente = cliente;
+        this.unidade = unidade;
+        this.dia_horario = dia_horario;
+        cliente.addVendaCliente(this);
+        funcionario.addCompra(this);
     }
 
     public int getId() {

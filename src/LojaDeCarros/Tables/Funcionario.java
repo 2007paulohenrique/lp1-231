@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Funcionario extends Pessoa{
     private double salario_fixo;
-    private int comissao;
+    private double comissao;
     private double horas_extras;
     private double horas_atrasadas;
     private Cargo cargo;
@@ -43,7 +43,7 @@ public class Funcionario extends Pessoa{
 
     //TODO
     public double calcularPagamento(){
-        return salario_fixo + (20*(horas_extras-horas_atrasadas)) + 
+        return salario_fixo + (20*(horas_extras-horas_atrasadas)) + comissao;
     }
 
     public void addAdvertencia(Advertencia Advertencia){
@@ -62,7 +62,7 @@ public class Funcionario extends Pessoa{
         return salario_fixo;
     }
 
-    public int getComissao() {
+    public double getComissao() {
         return comissao;
     }
 
@@ -78,7 +78,7 @@ public class Funcionario extends Pessoa{
         this.salario_fixo = salario_fixo;
     }
 
-    public void setComissao(int comissao) {
+    public void setComissao(double comissao) {
         this.comissao = comissao;
     }
 
