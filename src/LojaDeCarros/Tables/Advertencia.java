@@ -8,14 +8,14 @@ public class Advertencia {
 
     public Advertencia(int id, byte gravidade, Funcionario funcionario, String motivo) {
         this.id = id;
-        this.gravidade = gravidade;
+        setGravidade(gravidade);
         this.funcionario = funcionario;
         this.motivo = motivo;
         funcionario.addAdvertencia(this);
     }
 
     public Advertencia(byte gravidade, Funcionario funcionario, String motivo) {
-        this.gravidade = gravidade;
+        setGravidade(gravidade);
         this.funcionario = funcionario;
         this.motivo = motivo;
         funcionario.addAdvertencia(this);
@@ -31,5 +31,12 @@ public class Advertencia {
 
     public String getMotivo() {
         return motivo;
+    }
+
+    private void setGravidade(byte gravidade){
+        if (gravidade < 1 || gravidade > 5) {
+            throw new RuntimeException("A gravidade de uma adverência vai de 1 a 5.");
+        }
+        this.gravidade = gravidade;
     }
 }

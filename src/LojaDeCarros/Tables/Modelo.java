@@ -15,7 +15,6 @@ public class Modelo {
         this.marca = marca;
         this.categoria_modelo = categoriaModelo;
         marca.addModelo(this);
-        categoriaModelo.addModelo(this);
     }
 
     public Modelo(String nome, Marca marca, CategoriaModelo categoriaModelo) {
@@ -23,7 +22,6 @@ public class Modelo {
         this.marca = marca;
         this.categoria_modelo = categoriaModelo;
         marca.addModelo(this);
-        categoriaModelo.addModelo(this);
     }
 
     public void addVersao(Versao versao){

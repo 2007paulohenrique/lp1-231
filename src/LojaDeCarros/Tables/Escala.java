@@ -7,15 +7,15 @@ public class Escala {
     private String tipo;
 
     public Escala(int id, byte dias_trabalho, byte dias_folga) {
+        setDias_trabalho(dias_trabalho);
+        setDias_folga(dias_folga);
         this.id = id;
-        this.dias_trabalho = dias_trabalho;
-        this.dias_folga = dias_folga;
         setTipo();
     }
 
     public Escala(byte dias_trabalho, byte dias_folga) {
-        this.dias_trabalho = dias_trabalho;
-        this.dias_folga = dias_folga;
+        setDias_trabalho(dias_trabalho);
+        setDias_folga(dias_folga);
         setTipo();
     }
 
@@ -35,14 +35,18 @@ public class Escala {
         return tipo;
     }
 
-    public void setDias_trabalho(byte dias_trabalho) {
+    private void setDias_trabalho(byte dias_trabalho) {
+        if (dias_trabalho < 1 || dias_trabalho > 6) {
+            throw new RuntimeException("Um funcionário pode trabalhar no máximo 6 dias seguidos");
+        }
         this.dias_trabalho = dias_trabalho;
-        setTipo();
     }
 
-    public void setDias_folga(byte dias_folga) {
+    private void setDias_folga(byte dias_folga) {
+        if (dias_folga < 1 || dias_folga > 3) {
+            throw new RuntimeException("Um funcionario precisa folgar no mínimo 1 dia e não pode folgar mais que 3 dias seguidos");
+        }
         this.dias_folga = dias_folga;
-        setTipo();
     }
 
     public void setTipo() {
