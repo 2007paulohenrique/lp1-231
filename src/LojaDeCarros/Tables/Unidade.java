@@ -114,10 +114,7 @@ public class Unidade {
     }
 
     public void setDisponibilidade() {
-        if (disponibilidade = true) {
-            disponibilidade = false;
-        }
-        disponibilidade = true;
+        disponibilidade = !disponibilidade;
     }
 
     public void setDirecao(Direcao direcao) {

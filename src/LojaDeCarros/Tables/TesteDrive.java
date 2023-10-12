@@ -1,6 +1,8 @@
 package LojaDeCarros.Tables;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class TesteDrive {
     private int id;
@@ -14,19 +16,19 @@ public class TesteDrive {
         this.id = id;
         this.inicio = inicio;
         this.fim = fim;
+        verificarInicioFim();
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.unidade = unidade;
-        cliente.addTesteDrive(this);
     }
 
     public TesteDrive(LocalDateTime inicio, LocalDateTime fim, Cliente cliente, Funcionario funcionario, Unidade unidade) {
         this.inicio = inicio;
         this.fim = fim;
+        verificarInicioFim();
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.unidade = unidade;
-        cliente.addTesteDrive(this);
     }
 
     public int getId() {
@@ -39,5 +41,17 @@ public class TesteDrive {
 
     public LocalDateTime getFim() {
         return fim;
+    }
+
+    private void verificarInicioFim(){
+        if (inicio.isAfter(fim)) {
+            throw new RuntimeException("O teste drive não pode ter começado depois de seu fim.");
+        }
+    }
+
+    private void verificarFuncionario(){
+        if (funcionario.) {
+            
+        }
     }
 }
