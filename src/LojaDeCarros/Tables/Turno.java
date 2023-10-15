@@ -2,28 +2,22 @@ package LojaDeCarros.Tables;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 
 public class Turno {
     private int id;
     private LocalTime inicio;
     private LocalTime fim;
+    private short duracaoMinutos;
 
     public Turno(int id, LocalTime inicio, LocalTime fim) {
         this.id = id;
-        this.inicio = inicio;
-        this.fim = fim;
+        verificarInicioFim(inicio, fim);
+        duracaoMinutos = calcularDuracaoMinutos(inicio, fim);
     }
 
     public Turno(LocalTime inicio, LocalTime fim) {
-        if (fim.isBefore(inicio)) {
-            fim = fim.plus(1, ChronoUnit.DAYS);
-        }
-        if (ChronoUnit.HOURS.between(inicio, fim) > 10) {
-            throw new RuntimeException("A duração de um turno não pode exceder 10 horas.");
-        }
-        this.inicio = inicio;
-        this.fim = fim;
+        verificarInicioFim(inicio, fim);
+        duracaoMinutos = calcularDuracaoMinutos(inicio, fim);
     }
 
     public int getId() {
@@ -34,15 +28,24 @@ public class Turno {
         return inicio;
     }
 
+    public short getDuracaoMinutos() {
+        return duracaoMinutos;
+    }
+
     public LocalTime getFim() {
         return fim;
     }
 
-    public void setInicio(LocalTime inicio) {
-        this.inicio = inicio;
+    private void verificarInicioFim(LocalTime inicio, LocalTime fim){
+        if (calcularDuracaoMinutos(inicio, fim) > 10 || calcularDuracaoMinutos(inicio, fim) < 5) {
+            throw new RuntimeException("A duração de um turno tem que estar entre 5 e 10 horas.");
+        }
     }
 
-    public void setFim(LocalTime fim) {
-        this.fim = fim;
+    private short calcularDuracaoMinutos(LocalTime inicio, LocalTime fim){
+        if (fim.isBefore(inicio)) 
+            return (short) (24 - ChronoUnit.MINUTES.between(fim, inicio)); 
+            
+            return (short) (ChronoUnit.MINUTES.between(inicio, fim)); 
     }
 }

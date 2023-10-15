@@ -5,6 +5,7 @@ import java.util.List;
 public class Cargo {
     private int id;
     private String nome;
+    private short minimoHorasTrabalhadas
     private List<Funcionario> funcionarios;
 
     public Cargo(int id, String nome) {

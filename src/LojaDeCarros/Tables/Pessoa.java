@@ -117,7 +117,7 @@ public abstract class Pessoa {
 
     private void setCPF(String cpf){
         if (!cpf.matches("^\\d{11}$")) {
-            throw new RuntimeException("O cpf não deve ser inserido com \".\" ou \"-\". ");
+            throw new RuntimeException("O cpf deve ser completo e sem \".\" ou \"-\". ");
         }
         cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9);
     }
