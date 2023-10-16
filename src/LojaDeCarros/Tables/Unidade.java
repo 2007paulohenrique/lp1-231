@@ -2,46 +2,43 @@ package LojaDeCarros.Tables;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Unidade {
     private int id;
-    private int ano;
+    private short ano;
     private String placa;
     private int quilometragem;
     private double valor_unitario;
     private boolean disponibilidade;
     private Versao versao;
-    private Direcao direcao;
+    private Transmissao transmissao;
     private Cor cor;
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Unidade(int id, int ano, String placa, int quilometragem, double valor_unitario, Versao versao, Direcao direcao, Cor cor) {
-        if (id < 1) {
-            throw new RuntimeException("O id deve ser positivo");
-        }
+    public Unidade(int id, short ano, String placa, int quilometragem, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
+        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, valor_unitario, versao, transmissao, cor);
         this.id = id;
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
         this.versao = versao;
-        this.direcao = direcao;
-        this.cor = cor;
+        setTransmissao(transmissao);
+        setCor(cor);
         disponibilidade = true;
         versao.addUnidade(this);
     }
 
-    public Unidade(int ano, String placa, int quilometragem, double valor_unitario, Versao versao, Direcao direcao, Cor cor) {
+    public Unidade(short ano, String placa, int quilometragem, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
+        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, valor_unitario, versao, transmissao, cor);
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
         this.versao = versao;
-        this.direcao = direcao;
-        this.cor = cor;
+        setTransmissao(transmissao);
+        setCor(cor);
         disponibilidade = true;
         versao.addUnidade(this);
     }
@@ -78,23 +75,22 @@ public class Unidade {
         return disponibilidade;
     }
 
-    private void setAno(int ano){
-        int anoAtual = LocalDate.now().getYear();
-        int anoLancamentoVersao = versao.getLancamento().getYear();
+    private void setAno(short ano){
+        short anoAtual = (short) LocalDate.now().getYear();
+        short anoLancamentoVersao = (short) versao.getLancamento().getYear();
 
-        if (ano < 1950 || ano > anoAtual || ano < anoLancamentoVersao) {
-            throw new RuntimeException("O ano de fabricação de um carro não pode ser posterior ao ano atual e nem ao ano de lançamento de sua versao. A loja também não aceita carros que foram fabricadas antes do ano de 1950.");
+        if (ano > anoAtual || ano < anoLancamentoVersao) {
+            throw new RuntimeException("O ano de fabricação de um carro não pode ser posterior ao ano atual e nem ao ano de lançamento de sua versao.");
         }
     }
 
     public void setPlaca(String placa) {
-        String regex = "[A-Z]{3}[0-9][A-Z][0-9]{2}|[A-Z]{3}[0-9]{4}";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(placa);
-        boolean plc = matcher.matches();
-
-        if (plc = false) {
+        if (!placa.matches("^[A-Z]{3}\\d[A-Z]\\d{2}|[A-Z]{3}\\d{4}$")) {
             throw new RuntimeException("A placa deve possui o formato AAA0A00 ou AAA0000");
+        }
+
+        if (placa.matches("^[A-Z]{3}\\d{4}$")) {
+            placa = placa.substring(0, 3) + "-" + placa.substring(3);
         }
         this.placa = placa;
     }
@@ -103,12 +99,17 @@ public class Unidade {
         if (quilometragem < 0) {
             throw new RuntimeException("A quilometragem deve ser maior que zero");
         }
+
+        if (quilometragem < this.quilometragem) {
+            throw new RuntimeException("A quilometragem não pode ser menor que a antiga quilometragem do carro. verifique o odômetro do carro caso ele tenha, se mesmo assim a quilometragem for menor que a antiga, possivelmente houve uma manipulação na quilometragem do carro");
+
+        }
         this.quilometragem = quilometragem;
     }
 
     public void setValor_unitario(double valor_unitario) {
-        if (valor_unitario < 10000 || valor_unitario > 9999999.99) {
-            throw new RuntimeException("O valor do carro deve ser maior ou igual a 10000 e menor ou igual a 9999999.");
+        if (valor_unitario < 10000 || valor_unitario > 9999999.99 || Double.toString(valor_unitario).matches("^\\d+\\.\\d{1,2}$")) {
+            throw new RuntimeException("O valor do carro deve ser maior ou igual a 10000 e menor ou igual a 9999999. insira o valor com os centavos.");
         }
         this.valor_unitario = valor_unitario;
     }
@@ -117,8 +118,8 @@ public class Unidade {
         disponibilidade = !disponibilidade;
     }
 
-    public void setDirecao(Direcao direcao) {
-        this.direcao = direcao;
+    public void setTransmissao(Transmissao transmissao) {
+        this.transmissao = transmissao;
     }
 
     public void setCor(Cor cor) {

@@ -8,12 +8,14 @@ public class CategoriaCor {
     private List<Cor> cores;
 
     public CategoriaCor(int id, String nome) {
+        Verificacoes.verificarParametroNull(id, nome);
         this.id = id;
-        this.nome = nome;
+        setNome(nome);
     }
 
     public CategoriaCor(String nome) {
-        this.nome = nome;
+        Verificacoes.verificarParametroNull(nome);
+        setNome(nome);
     }
 
     public void addCor(Cor cor){
@@ -29,6 +31,10 @@ public class CategoriaCor {
     }
 
     public void setNome(String nome) {
+        if (!nome.matches("[\\p{L}]+") || nome.length() > 30 || nome.length() < 3) {
+            throw new RuntimeException("Uma categoria de cores deve possuir apenas letras, sem espaços e deve ter entre 3 e 30 de tamanho.");
+        }
+
         this.nome = nome;
     }
 }

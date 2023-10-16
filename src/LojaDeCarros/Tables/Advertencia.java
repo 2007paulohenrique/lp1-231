@@ -7,6 +7,7 @@ public class Advertencia {
     private String motivo;
 
     public Advertencia(int id, byte gravidade, Funcionario funcionario, String motivo) {
+        Verificacoes.verificarParametroNull(id, gravidade, funcionario, motivo);
         this.id = id;
         setGravidade(gravidade);
         this.funcionario = funcionario;
@@ -15,6 +16,7 @@ public class Advertencia {
     }
 
     public Advertencia(byte gravidade, Funcionario funcionario, String motivo) {
+        Verificacoes.verificarParametroNull(gravidade, funcionario, motivo);
         setGravidade(gravidade);
         this.funcionario = funcionario;
         this.motivo = motivo;
@@ -35,7 +37,7 @@ public class Advertencia {
 
     private void setGravidade(byte gravidade){
         if (gravidade < 1 || gravidade > 5) {
-            throw new RuntimeException("A gravidade de uma adverência vai de 1 a 5.");
+            throw new RuntimeException("A gravidade de uma advertência vai de 1 a 5.");
         }
         this.gravidade = gravidade;
     }

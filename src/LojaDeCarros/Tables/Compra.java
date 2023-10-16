@@ -1,5 +1,6 @@
 package LojaDeCarros.Tables;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Compra {
@@ -7,7 +8,7 @@ public class Compra {
     private Funcionario funcionario;
     private Cliente cliente;
     private Unidade unidade;
-    private Date dia_horario;
+    private LocalDateTime dia_horario;
 
     public Compra(int id, Funcionario funcionario, Cliente cliente, Unidade unidade, Date dia_horario) {
         this.id = id;
@@ -32,7 +33,7 @@ public class Compra {
         return id;
     }
 
-    public Date getDia_horario() {
+    public LocalDateTime getDia_horario() {
         return dia_horario;
     }
 }

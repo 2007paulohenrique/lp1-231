@@ -4,37 +4,35 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Year;
 import java.time.temporal.ChronoUnit;
-
+    
 public class RegistroPonto {
     private int id;
     private Funcionario funcionario;
-    private LocalDate dia;
-    private LocalTime entrada;
-    private LocalTime saida;
+    private LocalDateTime entrada;
+    private LocalDateTime saida;
 
     public RegistroPonto(int id, Funcionario funcionario) {
         this.id = id;
         this.funcionario = funcionario;
-        dia = LocalDate.now();
-        entrada = LocalTime.now();
+        entrada = LocalDateTime.now();
     }
 
     public RegistroPonto(Funcionario funcionario) {
         this.funcionario = funcionario;
-        dia = LocalDate.now();
-        entrada = LocalTime.now();
+        entrada = LocalDateTime.now();
     }
 
     public int getId() {
         return id;
     }
 
-    public LocalTime getEntrada() {
+    public LocalDateTime getEntrada() {
         return entrada;
     }
 
-    public LocalTime getSaida() {
+    public LocalDateTime getSaida() {
         return saida;
     }
 
@@ -42,30 +40,57 @@ public class RegistroPonto {
         if (saida != null) {
             throw new RuntimeException("O funcionário já bateu ponto");
         }
-        saida = LocalTime.now();
+        saida = LocalDateTime.now();
     }
 
     //TODO - calcular as horas extras e atrasadas para enviar aos atributos na classe funcionario
-    public double calcularHorasExtrasOuAtrasadas(){
-        LocalTime entradaTurno = funcionario.getTurno().getInicio();
-        LocalTime saidaTurno = funcionario.getTurno().getFim();
-        short horasDeDiferenca;
+    public double calcularHorasExtrasOuAtrasadasDia(){
+        short minutosTrabalhadosDia = (short) ChronoUnit.MINUTES.between(entrada, saida);
+        LocalTime inicioTurno = funcionario.getTurno().getInicio();
+        LocalTime fimTurno = funcionario.getTurno().getFim();
+        short duracaoTurno = funcionario.getTurno().getDuracaoMinutos();
+        LocalTime entradaHM = LocalTime.of(entrada.getHour(), entrada.getMinute());
 
-        if (Math.abs(ChronoUnit.MINUTES.between(entrada, entradaTurno)) > 10 ) {
-            if (ChronoUnit.MINUTES.between(entradaTurno, entrada) > 10) {
-                
-            }
-
-            if (ChronoUnit.MINUTES.between(entrada, entradaTurno) > 10) {
-                funcionario.adicionarHoras_extras();
-                
-            }
+        if (minutosTrabalhadosDia+20 < duracaoTurno) {
+            Advertencia advertencia = new Advertencia((byte) 1, funcionario, "trabalhou mais de 20 minutos a menos do que deveria.");
         }
 
+        if (!inicioTurno.isBefore(LocalTime.of(2, 0))) {
+            if (entradaHM.isBefore(inicioTurno.plusHours(22))) {
+                Advertencia advertencia = new Advertencia((byte) 2, funcionario, "Chegou num horário de mais de 2 horas antes do inicio do seu turno.");
+            
+            }
+        } else {
+            if (entradaHM.isBefore(inicioTurno.plusMinutes(2)) || entradaHM.isAfter(inicioTurno)) {
+                Advertencia advertencia = new Advertencia((byte) 2, funcionario, "Chegou num horário de mais de 2 horas antes do inicio do seu turno.");
+            
+            }
+        }
+        
 
+        if (minutosTrabalhadosDia > duracaoTurno+120) {
+
+            Advertencia advertencia = new Advertencia((byte) 1, funcionario, "Trabalhou mais que 2 horas além do que devia.");
+        }
+        
+
+        if (ChronoUnit.HOURS.between(entrada, saida) > 12) {
+
+        }
+
+        long minutosDiferenca;
+
+        if (inicioTurno.isAfter(LocalTime.of(2, 0))) {
+            if (entrada) {
+                
+            }
+            minutosDiferenca = ChronoUnit.MINUTES.between(entrada, funcionario.getTurno().getInicio());
+        }
     }
 
     public double adicionarHoras_atrasadasrHorasAtrasadass(){
         
     }
-}
+
+    public void confirmarHorasExtras(boolean confirmacao)
+} 
