@@ -3,21 +3,16 @@ package LojaDeCarros.Tables;
 public class Cor {
     private int id;
     private String nome;
-    private CategoriaCor categoriaCor;
 
-    public Cor(int id, String nome, CategoriaCor categoriaCor) {
-        Verificacoes.verificarParametroNull(id, nome, categoriaCor);
+    public Cor(int id, String nome) {
+        Verificacoes.verificarParametroNull(id, nome);
         this.id = id;
         setNome(nome);
-        this.categoriaCor = categoriaCor;
-        categoriaCor.addCor(this);
     }
 
-    public Cor(String nome, CategoriaCor categoriaCor) {
-        Verificacoes.verificarParametroNull(nome, categoriaCor);
+    public Cor(String nome) {
+        Verificacoes.verificarParametroNull(nome);
         setNome(nome);
-        this.categoriaCor = categoriaCor;
-        categoriaCor.addCor(this);
     }
 
     public int getId() {

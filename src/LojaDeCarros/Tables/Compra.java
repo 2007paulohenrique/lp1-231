@@ -1,7 +1,6 @@
 package LojaDeCarros.Tables;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Compra {
     private int id;
@@ -10,23 +9,29 @@ public class Compra {
     private Unidade unidade;
     private LocalDateTime dia_horario;
 
-    public Compra(int id, Funcionario funcionario, Cliente cliente, Unidade unidade, Date dia_horario) {
+    public Compra(int id, Funcionario funcionario, Cliente cliente, Unidade unidade) {
+        Verificacoes.verificarParametroNull(id, funcionario, cliente, unidade);
         this.id = id;
+        verificarFuncionarioEUnidade();
         this.funcionario = funcionario;
         this.cliente = cliente;
         this.unidade = unidade;
-        this.dia_horario = dia_horario;
+        dia_horario = LocalDateTime.now();
         cliente.addVendaCliente(this);
         funcionario.addCompra(this);
+        unidade.setDisponibilidade();
     }
 
-    public Compra(Funcionario funcionario, Cliente cliente, Unidade unidade, Date dia_horario) {
+    public Compra(Funcionario funcionario, Cliente cliente, Unidade unidade) {
+        Verificacoes.verificarParametroNull(id, funcionario, cliente, unidade);
+        verificarFuncionarioEUnidade();
         this.funcionario = funcionario;
         this.cliente = cliente;
         this.unidade = unidade;
-        this.dia_horario = dia_horario;
+        dia_horario = LocalDateTime.now();
         cliente.addVendaCliente(this);
         funcionario.addCompra(this);
+        unidade.setDisponibilidade();
     }
 
     public int getId() {
@@ -35,5 +40,11 @@ public class Compra {
 
     public LocalDateTime getDia_horario() {
         return dia_horario;
+    }
+
+    public void verificarFuncionarioEUnidade(){
+        if (funcionario.getDisponivel() == false || unidade.getDisponibilidade() == true) {
+            throw new RuntimeException("O funcionário não está disponivel no momento ou a unidade vinculada à compra já está em posse da loja");
+        }
     }
 }

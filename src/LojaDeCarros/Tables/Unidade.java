@@ -26,7 +26,7 @@ public class Unidade {
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);
-        disponibilidade = true;
+        disponibilidade = false;
         versao.addUnidade(this);
     }
 
@@ -39,7 +39,7 @@ public class Unidade {
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);
-        disponibilidade = true;
+        disponibilidade = false;
         versao.addUnidade(this);
     }
 

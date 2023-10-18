@@ -1,8 +1,6 @@
 package LojaDeCarros.Tables;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class TesteDrive {
     private int id;
@@ -12,21 +10,21 @@ public class TesteDrive {
     private Funcionario funcionario;
     private Unidade unidade;
 
-    public TesteDrive(int id, LocalDateTime inicio, LocalDateTime fim, Cliente cliente, Funcionario funcionario, Unidade unidade) {
+    public TesteDrive(int id, Cliente cliente, Funcionario funcionario, Unidade unidade) {
+        Verificacoes.verificarParametroNull(id, cliente, funcionario, unidade);
         this.id = id;
-        this.inicio = inicio;
-        this.fim = fim;
-        verificarInicioFim();
+        inicio = LocalDateTime.now();
         this.cliente = cliente;
+        verificarFuncionarioEUnidade();
         this.funcionario = funcionario;
         this.unidade = unidade;
     }
 
-    public TesteDrive(LocalDateTime inicio, LocalDateTime fim, Cliente cliente, Funcionario funcionario, Unidade unidade) {
-        this.inicio = inicio;
-        this.fim = fim;
-        verificarInicioFim();
+    public TesteDrive(Cliente cliente, Funcionario funcionario, Unidade unidade) {
+        Verificacoes.verificarParametroNull(id, cliente, funcionario, unidade);
+        inicio = LocalDateTime.now();
         this.cliente = cliente;
+        verificarFuncionarioEUnidade();
         this.funcionario = funcionario;
         this.unidade = unidade;
     }
@@ -43,15 +41,13 @@ public class TesteDrive {
         return fim;
     }
 
-    private void verificarInicioFim(){
-        if (inicio.isAfter(fim)) {
-            throw new RuntimeException("O teste drive não pode ter começado depois de seu fim.");
-        }
+    public void marcarFimTesteDrive(){
+        fim = LocalDateTime.now();
     }
 
-    private void verificarFuncionario(){
-        if (funcionario.) {
-            
+    private void verificarFuncionarioEUnidade(){
+        if (funcionario.getDisponivel() == false || unidade.getDisponibilidade() == false) {
+            throw new RuntimeException("O funcionário ou a unidade não estão disponíveis no momento, talvez tenha ocorrido um erro de digitação.");
         }
     }
 }

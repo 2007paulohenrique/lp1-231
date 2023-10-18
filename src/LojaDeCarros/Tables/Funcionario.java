@@ -12,31 +12,28 @@ public class Funcionario extends Pessoa{
     private double salario_fixo;
     private double pagamentoDoMes;
     private double comissao;
-    private double horas_extras;
-    private double horas_atrasadas;
+    private double horasDeTrabalhoDeDiferenca;
     private short dia_pagamentoOriginal;
     private short dia_pagamento = dia_pagamentoOriginal;
     private LocalTime[] intervalos;
     private short duracaoIntervalosMinutos;
     private Cargo cargo;
     private Turno turno;
-    private Escala escala;
     private boolean disponivel;
     private List<Advertencia> advertencias;
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, String endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos,LocalTime intervalo, Cargo cargo, Turno turno, Escala escala){
+    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos,LocalTime intervalo, Cargo cargo, Turno turno){
         super(id, nome, email, contato, cpf, data_nascimento, endereco);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         adicionarIntervalo(intervalo);
         setCargo(cargo);
         setTurno(turno);
-        setEscala(escala);
-        setComissao(0);
-        adicionarHoras_extras(0);
-        adicionarHoras_atrasadas(0);
+        disponivel = false;
+        comissao = 0;
+        horasDeTrabalhoDeDiferenca = 0;
         cargo.addFuncionario(this);
 
         /*
@@ -50,16 +47,15 @@ public class Funcionario extends Pessoa{
         scheduler2.scheduleAtFixedRate(this::terminarPeriodoDePagamento, 0, 1, TimeUnit.DAYS);
     }
 
-    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, String endereco, double salario_fixo, short dia_pagamento, LocalTime[] intervalos, Cargo cargo, Turno turno, Escala escala){
+    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, LocalTime[] intervalos, Cargo cargo, Turno turno){
         super(nome, email, contato, cpf, data_nascimento, endereco);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         setCargo(cargo);
         setTurno(turno);
-        setEscala(escala);
-        setComissao(0);
-        adicionarHoras_extras(0);
-        adicionarHoras_atrasadas(0);
+        disponivel = false;
+        comissao = 0;
+        horasDeTrabalhoDeDiferenca = 0;
         cargo.addFuncionario(this);
 
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -70,7 +66,7 @@ public class Funcionario extends Pessoa{
     }
 
     public double calcularPagamento(){
-        return salario_fixo + (20*(horas_extras-horas_atrasadas)) + comissao;
+        return salario_fixo + (20*(horasDeTrabalhoDeDiferenca)) + comissao;
     }
 
     public void addAdvertencia(Advertencia Advertencia){
@@ -93,12 +89,8 @@ public class Funcionario extends Pessoa{
         return comissao;
     }
 
-    public double getHoras_extras() {
-        return horas_extras;
-    }
-
-    public double getHoras_atrasadas() {
-        return horas_atrasadas;
+    public double getHorasDeTrabalhoDeDiferenca() {
+        return horasDeTrabalhoDeDiferenca;
     }
 
     public void setSalario_fixo(double salario_fixo) {
@@ -112,28 +104,17 @@ public class Funcionario extends Pessoa{
         if (comissao < 0) {
             throw new RuntimeException("Somente valores positivos");
         }
-        this.comissao = comissao;
+        this.comissao += comissao;
     }
 
-    public void adicionarHoras_extras(double horas_extras) {
-        if (horas_extras < 0) {
-            throw new RuntimeException("Somente valores positivos");
-        }
-        this.horas_extras += horas_extras;
-    }
-
-    public void adicionarHoras_atrasadas(double horas_atrasadas) {
-        if (horas_atrasadas < 0) {
-            throw new RuntimeException("Somente valores positivos");
-        }
-        this.horas_atrasadas += horas_atrasadas;
+    public void ModificarHorasDeTrabalhoDeDiferenca(double horasDeTrabalhoDeDiferenca) {
+        this.horasDeTrabalhoDeDiferenca += horasDeTrabalhoDeDiferenca;
     }
 
     private void terminarPeriodoDePagamento(){
         if (LocalDate.now().getDayOfMonth() == dia_pagamento) {
         pagamentoDoMes = calcularPagamento();
-        horas_atrasadas = 0;
-        horas_extras = 0;
+        horasDeTrabalhoDeDiferenca = 0;
         comissao = 0;
         }
     }
@@ -178,10 +159,6 @@ public class Funcionario extends Pessoa{
 
     public void setDisponivel() {
         disponivel = !disponivel;
-    }
-
-    public void setEscala(Escala escala) {
-        this.escala = escala;
     }
 
     public double getPagamentoDoMes() {
