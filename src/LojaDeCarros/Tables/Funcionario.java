@@ -26,6 +26,7 @@ public class Funcionario extends Pessoa{
 
     public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos,LocalTime intervalo, Cargo cargo, Turno turno){
         super(id, nome, email, contato, cpf, data_nascimento, endereco);
+        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         adicionarIntervalo(intervalo);
@@ -47,8 +48,9 @@ public class Funcionario extends Pessoa{
         scheduler2.scheduleAtFixedRate(this::terminarPeriodoDePagamento, 0, 1, TimeUnit.DAYS);
     }
 
-    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, LocalTime[] intervalos, Cargo cargo, Turno turno){
+    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, LocalTime intervalo, Cargo cargo, Turno turno){
         super(nome, email, contato, cpf, data_nascimento, endereco);
+        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         setCargo(cargo);
