@@ -3,8 +3,8 @@ package ProjetoLG;
 public class AcaoPreferencial extends Ativo {
     private double dividendoFixo;
 
-    public AcaoPreferencial(String codigo, String nome, double precoAtual, double dividendoFixo, Empresa empresa) {
-        super(codigo, nome, precoAtual, empresa);
+    public AcaoPreferencial(String nome, double precoAtual, double dividendoFixo) {
+        super(nome, precoAtual);
         setDividendoFixo(dividendoFixo);
     }
 

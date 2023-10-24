@@ -1,7 +1,8 @@
 package ProjetoLG;
 
 public class OrdemVenda extends OrdemAtivo{
-    public OrdemVenda(Investidor investidor, Corretora corretora, Ativo ativo, int quantidade, double preco) {
-        super(investidor, corretora, ativo, quantidade, preco);
+    public OrdemVenda(Investidor investidor, Ativo ativo, int quantidade) {
+        super(investidor, ativo, quantidade);
+        investidor.addOrdenVenda(this);
     }
 }

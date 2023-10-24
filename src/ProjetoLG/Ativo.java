@@ -1,28 +1,12 @@
 package ProjetoLG;
 
-import java.util.List;
-
 public abstract class Ativo {
-    private String codigo;
     private String nome;
     private double precoAtual;
-    private Empresa empresa;
-    private List<Bolsa> bolsas;
 
-    public Ativo(String codigo, String nome, double precoAtual, Empresa empresa) {
-        this.codigo = codigo;
+    public Ativo(String nome, double precoAtual) {
         this.nome = nome;
         setPrecoAtual(precoAtual);
-        empresa.addAtivo(this);
-    }
-
-    public void addBolsa(Bolsa bolsa){
-        bolsas.add(bolsa);
-        
-    }
-
-    public String getCodigo() {
-        return codigo;
     }
 
     public String getNome() {

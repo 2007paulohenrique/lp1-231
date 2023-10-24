@@ -5,8 +5,6 @@ import java.util.List;
 public class Corretora {
     private String nome;
     private List<Investidor> clientes;
-    private List<Empresa> empresas;
-    private List<Bolsa> bolsas;
     private List<OrdemCompra> ordens_de_compras_pendentes;
     private List<OrdemVenda> ordens_de_vendas_pendentes;
 
@@ -14,11 +12,6 @@ public class Corretora {
         this.nome = nome;
     }
 
-    public void enviarOrdemCompra(OrdemCompra ordem, Bolsa bolsa) {
-        ordens_de_compras_pendentes.add(ordem);
-        bolsas.add(bolsa);
-        bolsa.addOrdensCompraa(ordem);
-    }
 
     public String getNome() {
         return nome;
@@ -29,14 +22,11 @@ public class Corretora {
     }
 
     public void enviarOrdemVenda(OrdemVenda ordem, Bolsa bolsa) {
-        ordens_de_vendas_pendentes.add(ordem);
-        bolsas.add(bolsa);
         bolsa.addOrdensVenda(ordem);
     }
 
-    public void addEmpresa(Empresa empresa){
-        empresas.add(empresa);
-        empresa.addCorretora(this);
+    public void enviarOrdemCompra(OrdemCompra ordem, Bolsa bolsa) {
+        bolsa.addOrdensCompra(ordem);
     }
 
     public void addCliente(Investidor investidor){
@@ -44,8 +34,11 @@ public class Corretora {
         investidor.addCorretora(this);
     }
 
-    public void addBolsa(Bolsa bolsa){
-        bolsas.add(bolsa);
-        bolsa.addCorretora(this);
+    public void addOrdensCompra(OrdemCompra ordemCompra){
+        ordens_de_compras_pendentes.add(ordemCompra);
+    }
+
+    public void addOrdensVenda(OrdemVenda ordemVenda){
+        ordens_de_vendas_pendentes.add(ordemVenda);
     }
 }

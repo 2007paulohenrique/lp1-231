@@ -3,8 +3,8 @@ package ProjetoLG;
 public class FII extends Ativo {
     private double rendimentoMensal;
 
-    public FII(String codigo, String nome, double precoAtual, double rendimentoMensal, Empresa empresa) {
-        super(codigo, nome, precoAtual, empresa);
+    public FII(String nome, double precoAtual, double rendimentoMensal) {
+        super(nome, precoAtual);
         setRendimentoMensal(rendimentoMensal);
     }
 

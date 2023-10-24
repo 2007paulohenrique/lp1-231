@@ -7,46 +7,45 @@ public class Investidor {
     private String cpf;
     private List<Corretora> corretoras;
     private Carteira carteira;
-    private List<Bolsa> bolsas;
-    private List<Custodiante> custodiantes;
+    private Custodiante custodiante;
     private List<OrdemCompra> ordens_compras;
     private List<OrdemVenda> ordens_vendas;
 
-    public Investidor(String nome, String cpf, Carteira carteira) {
+    public Investidor (String nome, String cpf, Carteira carteira, Custodiante custodiante, Corretora corretora){
         this.nome = nome;
         this.cpf = cpf;
-        this.carteira = carteira;
+        this.custodiante = custodiante;
+        corretoras.add(corretora);
     }
 
     public void addCorretora(Corretora corretora) {
         corretoras.add(corretora);
     }
 
-    public void addCustodiante(Custodiante custodiante) {
-        custodiantes.add(custodiante);
+    public void enviarOrdemACorretora(Ativo ativo, int quantidade, Corretora corretora, String tipoOrdem){
+        if (tipoOrdem == "compra") {
+            OrdemCompra ordemCompra = new OrdemCompra(this, ativo, quantidade);
+            corretora.addOrdensCompra(ordemCompra);
+        } else if (tipoOrdem == "venda") {
+            OrdemVenda ordemVenda = new OrdemVenda(this, ativo, quantidade);
+            corretora.addOrdensVenda(ordemVenda);
+        } else {
+            throw new RuntimeException("O tipo da ordem deve ser \"compra\" ou \"venda\"");
+        }
     }
 
-    public void comprarAtivo(Ativo ativo, Corretora corretora, Custodiante custodiante){
-        corretoras.add(corretora);
-        carteira.adicionarAtivo(ativo);
-        addCustodiante(custodiante);
-        addCorretora(corretora);
-        custodiante.adicionarAtivo(ativo); 
-        custodiante.addCliente(this);
+    public double comprarAtivo(OrdemVenda vendaAtivo, Bolsa bolsa){
+        bolsa.removeOrdemVenda(vendaAtivo);
+        carteira.adicionarAtivo(vendaAtivo.getAtivo());
+        return vendaAtivo.getValorTotal();
     }
 
-    public void enviarOrdemDeCompra(OrdemCompra ordem, Corretora corretora, Bolsa bolsa) {
+    public void addOrdenCompra(OrdemCompra ordem){
         ordens_compras.add(ordem);
-        bolsas.add(bolsa);
-        bolsa.addOrdensCompraa(ordem);
-        corretora.enviarOrdemCompra(ordem, bolsa);
     }
 
-    public void enviarOrdemDeVenda(OrdemVenda ordem, Corretora corretora, Bolsa bolsa) {
+    public void addOrdenVenda(OrdemVenda ordem){
         ordens_vendas.add(ordem);
-        bolsas.add(bolsa);
-        bolsa.addOrdensVenda(ordem);
-        corretora.enviarOrdemVenda(ordem, bolsa);
     }
 
     public String getNome() {
@@ -59,10 +58,6 @@ public class Investidor {
 
     public String getCpf() {
         return cpf;
-    }
-
-    public void addBolsa(Bolsa bolsa){
-        bolsas.add(bolsa);
     }
 
 }

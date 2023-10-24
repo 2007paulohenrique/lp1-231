@@ -2,33 +2,26 @@ package ProjetoLG;
 
 public abstract class OrdemAtivo {
     private Investidor investidor;
-    private Corretora corretora;
     private Ativo ativo;
     private int quantidade;
-    private double preco;
+    private double valorTotal;
 
-    public OrdemAtivo(Investidor investidor, Corretora corretora, Ativo ativo, int quantidade, double preco) {
+    public OrdemAtivo(Investidor investidor, Ativo ativo, int quantidade) {
         this.investidor = investidor;
-        this.corretora = corretora;
         this.ativo = ativo;
         this.quantidade = quantidade;
-        this.preco = preco;
+        valorTotal = ativo.getPrecoAtual()*quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public Ativo getAtivo() {
+        return ativo;
     }
 
     public int getQuantidade() {
         return quantidade;
     }
-
-    public double getPreco() {
-        return preco;
-    }
-
 }
