@@ -7,15 +7,15 @@ public class Marca {
     private String nome;
     private List<Modelo> modelos;
 
-    public Marca(int id, String nome, boolean sigla) {
+    public Marca(int id, String nome) {
         Verificacoes.verificarParametroNull(id, nome);
         this.id = id;
-        setNome(nome, sigla);
+        setNome(nome);
     }
 
-    public Marca(String nome, boolean sigla) {
+    public Marca(String nome) {
         Verificacoes.verificarParametroNull(nome);
-        setNome(nome, sigla);
+        setNome(nome);
     }
 
     public void addModelo(Modelo modelo){
@@ -30,20 +30,18 @@ public class Marca {
         return nome;
     }
 
-    public void setNome(String nome, boolean sigla) {
+    public void setNome(String nome) {
         if (nome.length() > 50 || nome.length() < 2 || nome.matches("^[a-zA-Z]+$")) {
             throw new RuntimeException("O nome da marca deve ter somente uma palavra com no mínimo duas letras e que não exceda 50 letras.");
-        }
         
-        if (sigla == true) {
-            nome = nome.toUpperCase();
-
-        } else {
-            nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
-
         }
+        nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
         
         this.nome = nome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
