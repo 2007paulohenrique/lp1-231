@@ -15,8 +15,8 @@ public class CriarTabelas {
             );
         """;
 
-        String sqlCategoria_modelo = """
-            create table categoria_modelo(
+        String sqlCategoria_carro = """
+            create table categoria_carro(
                 id int auto_increment,
                 nome varchar(20) unique,
                 primary key(id)
@@ -27,10 +27,8 @@ public class CriarTabelas {
             create table modelo(
                 id int auto_increment,
                 id_marca int,
-                id_categoria_modelo int,
                 nome varchar(40) unique,
                 foreign key(id_marca) references marca(id),
-                foreign key(id_categoria_modelo) references categoria_modelo(id),
                 primary key(id)
             );
         """;
@@ -38,11 +36,13 @@ public class CriarTabelas {
         String sqlVersao = """
             create table versao(
                 id int auto_increment,
-                id_modelo int,
+                id_modelo int,                
+                id_categoria_carro int,
                 nome varchar(30),
                 unique(id_modelo, nome),
                 lancamento date,
-                foreign key(id_modelo) references modelo(id),
+                foreign key(id_modelo) references modelo(id),               
+                foreign key(id_categoria_carro) references categoria_carro(id),
                 primary key(id)
             );
         """;
@@ -72,6 +72,7 @@ public class CriarTabelas {
                 ano smallint,
                 placa varchar(8) unique,
                 quilometragem int,
+                estado_conservacao varchar,
                 valor_unitario decimal(9,2),
                 disponibilidade boolean,
                 foreign key(id_transmissao) references transmissao(id),
@@ -232,7 +233,7 @@ public class CriarTabelas {
         try (Connection connection = Conexao.getConnection();
             Statement statement = connection.createStatement()) {
             statement.executeUpdate(sqlMarca);
-            statement.executeUpdate(sqlCategoria_modelo);
+            statement.executeUpdate(sqlCategoria_carro);
             statement.executeUpdate(sqlModelo);
             statement.executeUpdate(sqlVersao);
             statement.executeUpdate(sqlTransmissao);

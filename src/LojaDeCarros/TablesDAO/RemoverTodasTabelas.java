@@ -50,8 +50,8 @@ public class RemoverTodasTabelas {
             drop table if exists marca;        
         """;
 
-        String removerSeExisteCategoria_modelo = """
-            drop table if exists categoria_modelo;        
+        String removerSeExisteCategoria_carro = """
+            drop table if exists categoria_carro;        
         """;
 
         String removerSeExisteTransmissao = """
@@ -91,7 +91,7 @@ public class RemoverTodasTabelas {
             statement.executeUpdate(removerSeExisteVersao);
             statement.executeUpdate(removerSeExisteModelo);
             statement.executeUpdate(removerSeExisteMarca);
-            statement.executeUpdate(removerSeExisteCategoria_modelo);
+            statement.executeUpdate(removerSeExisteCategoria_carro);
             statement.executeUpdate(removerSeExisteTransmissao);
             statement.executeUpdate(removerSeExisteCor);
             statement.executeUpdate(removerSeExisteTurno);

@@ -8,6 +8,7 @@ public class Unidade {
     private short ano;
     private String placa;
     private int quilometragem;
+    private String estado_conservacao;
     private double valor_unitario;
     private boolean disponibilidade;
     private Versao versao;
@@ -16,12 +17,13 @@ public class Unidade {
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Unidade(int id, short ano, String placa, int quilometragem, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
-        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, valor_unitario, versao, transmissao, cor);
+    public Unidade(int id, short ano, String placa, int quilometragem, String estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
+        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
         this.id = id;
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
+        setEstado_conservacao(estado_conservacao);
         setValor_unitario(valor_unitario);
         this.versao = versao;
         setTransmissao(transmissao);
@@ -30,11 +32,12 @@ public class Unidade {
         versao.addUnidade(this);
     }
 
-    public Unidade(short ano, String placa, int quilometragem, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
-        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, valor_unitario, versao, transmissao, cor);
+    public Unidade(short ano, String placa, int quilometragem, String estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
+        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
+        setEstado_conservacao(estado_conservacao);
         setValor_unitario(valor_unitario);
         this.versao = versao;
         setTransmissao(transmissao);
@@ -65,6 +68,10 @@ public class Unidade {
 
     public int getQuilometragem() {
         return quilometragem;
+    }
+
+    public String getEstado_conservacao() {
+        return estado_conservacao;
     }
 
     public double getValor_unitario() {
@@ -105,6 +112,15 @@ public class Unidade {
 
         }
         this.quilometragem = quilometragem;
+    }
+
+    public void setEstado_conservacao(String estado_conservacao) {
+        if (!estado_conservacao.matches("^[a-zA-Z\\-]+$") || estado_conservacao.length() > 20) {
+            throw new RuntimeException("O estado de conservação não pode passar de 20 caracteres, podendo ter somente letras e \"-\".");
+
+        }
+        estado_conservacao = estado_conservacao.substring(0, 1).toUpperCase() + estado_conservacao.substring(1).toLowerCase();
+        this.estado_conservacao = estado_conservacao;
     }
 
     public void setValor_unitario(double valor_unitario) {
