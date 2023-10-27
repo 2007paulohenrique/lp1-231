@@ -11,4 +11,8 @@ public class UnicaEscolha extends Questao {
         alternativaCerta=alternativa;
         
     }
+
+    public Alternativa getAlternativaCerta() {
+        return alternativaCerta;
+    }
 }

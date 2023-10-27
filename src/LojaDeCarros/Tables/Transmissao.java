@@ -27,8 +27,8 @@ public class Transmissao {
         String[] palavras = tipo.split(" ");
         StringBuilder nomeFormatadodo = new StringBuilder();
 
-        if (tipo.length() > 30 || tipo.length() < 4 || !tipo.matches("[a-zA-Z ]+")) {
-            throw new RuntimeException("Um tipo de transmissao deve ter apenas letras sem acentos e possuir um tamanho entre 4 e 30.");
+        if (tipo.length() > 40 || tipo.length() < 4 || !tipo.matches("[a-zA-Z ]+")) {
+            throw new RuntimeException("Um tipo de transmissao deve ter apenas letras sem acentos e possuir um tamanho entre 4 e 40.");
         }
         
         for (String palavra : palavras) {

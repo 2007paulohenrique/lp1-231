@@ -1,8 +1,9 @@
-package LojaDeCarros.TablesDAO;
+package LojaDeCarros.EstruturaBanco;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import LojaDeCarros.Conexao;
 
 public class CriarViews {
     public void criar() throws SQLException{

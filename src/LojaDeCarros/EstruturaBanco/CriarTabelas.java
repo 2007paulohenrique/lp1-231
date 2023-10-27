@@ -1,9 +1,9 @@
-package LojaDeCarros.TablesDAO;
+package LojaDeCarros.EstruturaBanco;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import LojaDeCarros.Conexao;
 
 public class CriarTabelas {
     public void criar() throws SQLException {
@@ -50,7 +50,7 @@ public class CriarTabelas {
         String sqlTransmissao = """
             create table transmissao(
                 id int auto_increment,
-                tipo varchar(30) unique,
+                tipo varchar(40) unique,
                 primary key(id)
             );
         """;
@@ -72,7 +72,7 @@ public class CriarTabelas {
                 ano smallint,
                 placa varchar(8) unique,
                 quilometragem int,
-                estado_conservacao varchar,
+                estado_conservacao varchar(20),
                 valor_unitario decimal(9,2),
                 disponibilidade boolean,
                 foreign key(id_transmissao) references transmissao(id),

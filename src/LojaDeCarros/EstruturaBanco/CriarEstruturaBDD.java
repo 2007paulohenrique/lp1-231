@@ -1,14 +1,15 @@
-package LojaDeCarros;
+package LojaDeCarros.EstruturaBanco;
 
 import java.sql.SQLException;
 
-import LojaDeCarros.TablesDAO.CriarTabelas;
-import LojaDeCarros.TablesDAO.CriarViews;
-import LojaDeCarros.TablesDAO.RemoverTodasTabelas;
-import LojaDeCarros.TablesDAO.RemoverTodasViews;
+/*
+Esta classe prepara o workbench para criar a estrutura de banco da loja de carros.
+Cria as tabelas, views e inserts basicos.  
+*/
 
 public class CriarEstruturaBDD {
     public static void main(String[] args) throws SQLException {
+        
         RemoverTodasTabelas removerTabelas = new RemoverTodasTabelas();
         removerTabelas.remover();
 
@@ -20,5 +21,8 @@ public class CriarEstruturaBDD {
         
         CriarViews criarViews = new CriarViews();
         criarViews.criar();
+
+        CriarInsertsBasicos criarInsertsBasicos = new CriarInsertsBasicos();
+        criarInsertsBasicos.criar();
     }
 }

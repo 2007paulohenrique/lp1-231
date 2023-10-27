@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-//import LojaDeCarros.TablesDAO.Conexao;
+import LojaDeCarros.Conexao;
 import LojaDeCarros.Tables.Marca;
 
 // DAO = Data Access Object
