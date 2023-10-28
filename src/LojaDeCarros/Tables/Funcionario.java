@@ -104,7 +104,8 @@ public class Funcionario extends Pessoa{
 
     public void setComissao(double comissao) {
         if (comissao < 0) {
-            throw new RuntimeException("Somente valores positivos");
+            throw new RuntimeException("Somente valores positivos para adicionar ao valor da comissão que será entregue ao funcionário no dia do pagamento.");
+        
         }
         this.comissao += comissao;
     }

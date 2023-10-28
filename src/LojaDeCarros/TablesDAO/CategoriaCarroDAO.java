@@ -1,43 +1,42 @@
 package LojaDeCarros.TablesDAO;
 
+import LojaDeCarros.Tables.CategoriaCarro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import LojaDeCarros.Conexao;
-import LojaDeCarros.Tables.Marca;
 
-// DAO = Data Access Object
-public class MarcaDAO {
-    public Marca create(Marca marca) throws SQLException{
+import LojaDeCarros.Conexao;
+
+public class CategoriaCarroDAO {
+    public CategoriaCarro create(CategoriaCarro categoriaCarro) throws SQLException {
         String sql = """
-        INSERT INTO marca (nome) VALUES
-        (?);
+        INSERT INTO categoria_carro (nome)
+        VALUES (?);
         """;
-        
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection
             .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, marca.getNome());
+            statement.setString(1, categoriaCarro.getNome());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()) {
-                marca.setId(rs.getInt(1));
+                categoriaCarro.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return marca;
+            return categoriaCarro;
         }
     }
 
-    public Marca update(Marca marca) throws SQLException{
+    public CategoriaCarro update(CategoriaCarro categoriaCarro) throws SQLException {
         String sql = """
-        UPDATE marca
+        UPDATE categoria_carro
         SET nome = ?
         WHERE id = ?;
         """;
@@ -47,12 +46,12 @@ public class MarcaDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
 
-            statement.setString(1, marca.getNome());
-            statement.setInt(2, marca.getId());
+            statement.setString(1, categoriaCarro.getNome());
+            statement.setInt(2, categoriaCarro.getId());
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                return marca;
+                return categoriaCarro;
             }
             return null;
 
@@ -61,8 +60,28 @@ public class MarcaDAO {
             }
     }
 
-    public Marca findByNome(String nome) {
-        String sql = "SELECT * FROM marca WHERE nome = ?;";
+    /* 
+    public void delete(Integer id) {
+        String sql = "DELETE FROM categoria_carro WHERE id = ?;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(CategoriaCarro categoriaCarro) {
+        delete(categoriaCarro.getId());
+    }
+    */
+
+    public CategoriaCarro findByNome(String nome) {
+        String sql = "SELECT * FROM categoria_modelo WHERE nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -73,7 +92,7 @@ public class MarcaDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToMarca(rs);
+                return resultSetTocategoriaCarro(rs);
             }
 
             rs.close();
@@ -86,12 +105,10 @@ public class MarcaDAO {
         return null;
     }
 
-    private Marca resultSetToMarca(ResultSet rs) throws SQLException {
-        return new Marca(
+    private CategoriaCarro resultSetTocategoriaCarro(ResultSet rs) throws SQLException {
+        return new CategoriaCarro(
             rs.getInt("id"),
             rs.getString("nome")
         );
     }
 }
-
-    

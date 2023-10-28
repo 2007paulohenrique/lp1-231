@@ -6,23 +6,20 @@ public class Modelo {
     private int id;
     private String nome;
     private Marca marca;
-    private CategoriaModelo categoria_modelo;
     private List<Versao> versoes;
  
-    public Modelo(int id, String nome, Marca marca, CategoriaModelo categoriaModelo) {
-        Verificacoes.verificarParametroNull(id, nome, marca, categoriaModelo);
+    public Modelo(int id, String nome, Marca marca) {
+        Verificacoes.verificarParametroNull(id, nome, marca);
         this.id = id;
         setNome(nome);
         this.marca = marca;
-        this.categoria_modelo = categoriaModelo;
         marca.addModelo(this);
     }
 
-    public Modelo(String nome, Marca marca, CategoriaModelo categoriaModelo) {
-        Verificacoes.verificarParametroNull(nome, marca, categoriaModelo);
+    public Modelo(String nome, Marca marca) {
+        Verificacoes.verificarParametroNull(nome, marca);
         setNome(nome);
         this.marca = marca;
-        this.categoria_modelo = categoriaModelo;
         marca.addModelo(this);
     }
 
@@ -36,6 +33,10 @@ public class Modelo {
 
     public String getNome() {
         return nome;
+    }
+
+    public Marca getMarca() {
+        return marca;
     }
 
     public void setNome(String nome) {
@@ -55,5 +56,9 @@ public class Modelo {
 
         nome = nomeFormatadodo.toString().replaceAll("\\s+", " ").trim();
         this.nome = nome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

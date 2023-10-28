@@ -8,22 +8,25 @@ public class Versao {
     private String nome;
     private LocalDate lancamento;
     private Modelo modelo;
+    private CategoriaCarro categoriaCarro;
     private List<Unidade> unidades;
   
-    public Versao(int id, String nome, LocalDate lancamento, Modelo modelo) {
-        Verificacoes.verificarParametroNull(id, nome, lancamento, modelo);
+    public Versao(int id, String nome, LocalDate lancamento, Modelo modelo, CategoriaCarro categoriaCarro) {
+        Verificacoes.verificarParametroNull(id, nome, lancamento, modelo, categoriaCarro);
         this.id = id;
         setNome(nome);
         setLancamento(lancamento);
         this.modelo = modelo;
+        this.categoriaCarro = categoriaCarro;
         modelo.addVersao(this);
     }
 
-    public Versao(String nome, LocalDate lancamento, Modelo modelo) {
-        Verificacoes.verificarParametroNull(nome, lancamento, modelo);
+    public Versao(String nome, LocalDate lancamento, Modelo modelo, CategoriaCarro categoriaCarro) {
+        Verificacoes.verificarParametroNull(nome, lancamento, modelo, categoriaCarro);
         setNome(nome);
         setLancamento(lancamento);
         this.modelo = modelo;
+        this.categoriaCarro = categoriaCarro;
         modelo.addVersao(this);
     }
 
@@ -37,6 +40,14 @@ public class Versao {
 
     public String getNome() {
         return nome;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public CategoriaCarro getCategoriaCarro() {
+        return categoriaCarro;
     }
 
     public void setNome(String nome) {
@@ -69,5 +80,9 @@ public class Versao {
         }
 
         this.lancamento = lancamento;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,18 +1,18 @@
 package LojaDeCarros.Tables;
 
-public class CategoriaModelo {
+public class CategoriaCarro {
     private int id;
     private String nome;
 
-    public CategoriaModelo(int id, String nome, boolean sigla) {
+    public CategoriaCarro(int id, String nome) {
         Verificacoes.verificarParametroNull(id, nome);
         this.id = id;
-        setNome(nome, sigla);
+        setNome(nome);
     }
 
-    public CategoriaModelo(String nome, boolean sigla) {
+    public CategoriaCarro(String nome) {
         Verificacoes.verificarParametroNull(nome);
-        setNome(nome, sigla);
+        setNome(nome);
     }
 
     public int getId() {
@@ -23,19 +23,16 @@ public class CategoriaModelo {
         return nome;
     }
 
-    public void setNome(String nome, boolean sigla) {
+    public void setNome(String nome) {
         if (nome.length() > 20 || nome.length() < 2 || !nome.matches("[\\p{L}]+")) {
             throw new RuntimeException("Uma categoria de carros deve ter somente uma palavra com um tamanho entre 2 e 20.");
-        }
         
-        if (sigla == true) {
-            nome = nome.toUpperCase();
-            
-        } else {
-            nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
-
         }
-        
+        nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
         this.nome = nome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
