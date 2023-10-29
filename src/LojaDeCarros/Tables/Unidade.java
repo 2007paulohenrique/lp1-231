@@ -8,7 +8,7 @@ public class Unidade {
     private short ano;
     private String placa;
     private int quilometragem;
-    private String estado_conservacao;
+    private EstadoConservacao estado_conservacao;
     private double valor_unitario;
     private boolean disponibilidade;
     private Versao versao;
@@ -17,27 +17,25 @@ public class Unidade {
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Unidade(int id, short ano, String placa, int quilometragem, String estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
-        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
+    public Unidade(int id, short ano, String placa, int quilometragem, EstadoConservacao estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor, Boolean disponibilidade) {
+        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor, disponibilidade);
         this.id = id;
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
-        setEstado_conservacao(estado_conservacao);
         setValor_unitario(valor_unitario);
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);
-        disponibilidade = false;
         versao.addUnidade(this);
+        this.disponibilidade = disponibilidade;
     }
 
-    public Unidade(short ano, String placa, int quilometragem, String estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
+    public Unidade(short ano, String placa, int quilometragem, EstadoConservacao estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
         Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
         setAno(ano);
         setPlaca(placa);
         setQuilometragem(quilometragem);
-        setEstado_conservacao(estado_conservacao);
         setValor_unitario(valor_unitario);
         this.versao = versao;
         setTransmissao(transmissao);
@@ -58,7 +56,7 @@ public class Unidade {
         return id;
     }
 
-    public int getAno() {
+    public Short getAno() {
         return ano;
     }
 
@@ -68,10 +66,6 @@ public class Unidade {
 
     public int getQuilometragem() {
         return quilometragem;
-    }
-
-    public String getEstado_conservacao() {
-        return estado_conservacao;
     }
 
     public double getValor_unitario() {
@@ -114,15 +108,6 @@ public class Unidade {
         this.quilometragem = quilometragem;
     }
 
-    public void setEstado_conservacao(String estado_conservacao) {
-        if (!estado_conservacao.matches("^[a-zA-Z\\-]+$") || estado_conservacao.length() > 20) {
-            throw new RuntimeException("O estado de conservação não pode passar de 20 caracteres, podendo ter somente letras e \"-\".");
-
-        }
-        estado_conservacao = estado_conservacao.substring(0, 1).toUpperCase() + estado_conservacao.substring(1).toLowerCase();
-        this.estado_conservacao = estado_conservacao;
-    }
-
     public void setValor_unitario(double valor_unitario) {
         if (valor_unitario < 10000 || valor_unitario > 9999999.99 || Double.toString(valor_unitario).matches("^\\d+\\.\\d{1,2}$")) {
             throw new RuntimeException("O valor do carro deve ser maior ou igual a 10000 e menor ou igual a 9999999. insira o valor com os centavos.");
@@ -140,5 +125,29 @@ public class Unidade {
 
     public void setCor(Cor cor) {
         this.cor = cor;
+    }
+
+    public EstadoConservacao getEstado_conservacao() {
+        return estado_conservacao;
+    }
+
+    public Versao getVersao() {
+        return versao;
+    }
+
+    public Transmissao getTransmissao() {
+        return transmissao;
+    }
+
+    public Cor getCor() {
+        return cor;
+    }
+
+    public void setEstado_conservacao(EstadoConservacao estado_conservacao) {
+        this.estado_conservacao = estado_conservacao;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -143,6 +143,13 @@ public class CriarInsertsBasicos {
             ('Azul Perolizado');         
         """;
 
+        String sqlEstadoConservacao = """
+            insert into estado_conservacao (nome) values
+            ('Novo'),
+            ('Seminovo '),
+            ('Usado');         
+        """;
+
         String sqlModelo = """
             insert into modelo (id_marca, nome) values
             (1, 'Onix'), (1, 'Cruze'), (1, 'Equinox'),
@@ -288,6 +295,7 @@ public class CriarInsertsBasicos {
             statement.executeUpdate(sqlVersao);
             statement.executeUpdate(sqlTransmissao);
             statement.executeUpdate(sqlCor);
+            statement.executeUpdate(sqlEstadoConservacao);
             statement.executeUpdate(sqlCargo);
             statement.executeUpdate(sqlForma_pagamento);
             statement.executeUpdate(sqlTurno);

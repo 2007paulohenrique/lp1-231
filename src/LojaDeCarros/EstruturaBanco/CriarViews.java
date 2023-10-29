@@ -9,9 +9,10 @@ public class CriarViews {
     public void criar() throws SQLException{
         String sqlUnidades_para_venda = """
             create view unidades_para_venda as
-            select ma.nome as marca, mo.nome as modelo, ve.nome as versao, co.nome as cor, un.valor_unitario
+            select ma.nome as marca, mo.nome as modelo, ve.nome as versao, es.nome as estado_conservacao, co.nome as cor, un.valor_unitario
             from unidade un
             inner join cor co on co.id = un.id_cor
+            inner join estado_conservacao es on es.id = un.id_estado_conservacao
             inner join versao ve on ve.id = un.id_versao
             inner join modelo mo on mo.id = ve.id_modelo
             inner join marca ma on ma.id = mo.id_marca

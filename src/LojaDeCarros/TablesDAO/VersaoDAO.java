@@ -11,7 +11,6 @@ import java.util.List;
 
 import LojaDeCarros.Conexao;
 import LojaDeCarros.Tables.CategoriaCarro;
-import LojaDeCarros.Tables.Marca;
 import LojaDeCarros.Tables.Modelo;
 import LojaDeCarros.Tables.Versao;
 
@@ -122,39 +121,7 @@ public class VersaoDAO {
         return versoes;
     }
 
-    private Marca findMarcaDoModeloDaVersao(int id) {
-        String sql = "SELECT * FROM marca WHERE id = ?;";
-
-        try (
-            Connection connection = Conexao.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-        ) {
-            statement.setInt(1, id);
-
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                return resultSetToMarca(rs);
-            }
-
-            rs.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        return null;
-    }
-
-    private Marca resultSetToMarca(ResultSet rs) throws SQLException { 
-        return new Marca(
-            rs.getInt("id"),
-            rs.getString("nome")
-        );
-    }
-
-    private Modelo findModeloDaVersao(int id) {
+    private static Modelo findModeloDaVersao(int id) {
         String sql = "SELECT * FROM modelo WHERE id = ?;";
 
         try (
@@ -166,7 +133,7 @@ public class VersaoDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToModelo(rs);
+                return ModeloDAO.resultSetToModelo(rs);
             }
 
             rs.close();
@@ -179,7 +146,7 @@ public class VersaoDAO {
         return null;
     }
 
-    private CategoriaCarro findCategoriaDaVersao(int id) {
+    private static CategoriaCarro findCategoriaDaVersao(int id) {
         String sql = "SELECT * FROM categoria_carro WHERE id = ?;";
 
         try (
@@ -191,7 +158,7 @@ public class VersaoDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetTocategoriaCarro(rs);
+                return CategoriaCarroDAO.resultSetTocategoriaCarro(rs);
             }
 
             rs.close();
@@ -204,30 +171,14 @@ public class VersaoDAO {
         return null;
     }
 
-    private Modelo resultSetToModelo(ResultSet rs) throws SQLException { 
-        return new Modelo(
-            rs.getInt("id"),
-            rs.getString("nome"),
-            findMarcaDoModeloDaVersao(rs.getInt(2))
-        );
-    }
-
-    private CategoriaCarro resultSetTocategoriaCarro(ResultSet rs) throws SQLException {
-        return new CategoriaCarro(
-            rs.getInt("id"),
-            rs.getString("nome")
-        );
-    }
-
-    //testar
-    private Versao resultSetToVersao(ResultSet rs) throws SQLException { 
-        LocalDate lancamento = LocalDate.of(rs.getDate("lancamento").getYear(), rs.getDate("lancamento").getMonth(), rs.getDate("lancamento").getDay());
+    protected static Versao resultSetToVersao(ResultSet rs) throws SQLException { 
+        LocalDate lancamento = rs.getDate("lancamento").toLocalDate();
         return new Versao(
             rs.getInt("id"),
             rs.getString("nome"),
             lancamento,
-            findModeloDaVersao(rs.getInt(2)),
-            findCategoriaDaVersao(rs.getInt(3))
+            findModeloDaVersao(rs.getInt("id_modelo")),
+            findCategoriaDaVersao(rs.getInt("id_categoria_carro"))
         );
     }
 }

@@ -4,39 +4,39 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import LojaDeCarros.Conexao;
-import LojaDeCarros.Tables.Marca;
 
-public class MarcaDAO {
-    public Marca create(Marca marca) throws SQLException{
+import LojaDeCarros.Conexao;
+import LojaDeCarros.Tables.EstadoConservacao;
+
+public class EstadoConservacaoDAO {
+    public EstadoConservacao create(EstadoConservacao estadoConservacao) throws SQLException {
         String sql = """
-        INSERT INTO marca (nome) VALUES
-        (?);
+        INSERT INTO estado_conservacao (nome)
+        VALUES (?);
         """;
-        
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection
             .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, marca.getNome());
+            statement.setString(1, estadoConservacao.getNome());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()) {
-                marca.setId(rs.getInt(1));
+                estadoConservacao.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return marca;
+            return estadoConservacao;
         }
     }
 
-    public Marca update(Marca marca) throws SQLException{
+    public EstadoConservacao update(EstadoConservacao estadoConservacao) throws SQLException {
         String sql = """
-        UPDATE marca
+        UPDATE estado_conservacao
         SET nome = ?
         WHERE id = ?;
         """;
@@ -46,12 +46,12 @@ public class MarcaDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
 
-            statement.setString(1, marca.getNome());
-            statement.setInt(2, marca.getId());
+            statement.setString(1, estadoConservacao.getNome());
+            statement.setInt(2, estadoConservacao.getId());
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                return marca;
+                return estadoConservacao;
             }
             return null;
 
@@ -60,8 +60,8 @@ public class MarcaDAO {
             }
     }
 
-    public Marca findByNome(String nome) {
-        String sql = "SELECT * FROM marca WHERE nome = ?;";
+    public EstadoConservacao findByNome(String nome) {
+        String sql = "SELECT * FROM estado_conservacao WHERE nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -72,7 +72,7 @@ public class MarcaDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToMarca(rs);
+                return resultSetToEstadoConservacao(rs);
             }
 
             rs.close();
@@ -85,12 +85,10 @@ public class MarcaDAO {
         return null;
     }
 
-    protected static Marca resultSetToMarca(ResultSet rs) throws SQLException {
-        return new Marca(
+    protected static EstadoConservacao resultSetToEstadoConservacao(ResultSet rs) throws SQLException {
+        return new EstadoConservacao(
             rs.getInt("id"),
             rs.getString("nome")
         );
     }
 }
-
-    

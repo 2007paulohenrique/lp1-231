@@ -63,6 +63,10 @@ public class RemoverTodasTabelas {
             drop table if exists cor;        
         """;
 
+        String removerSeExisteEstadoConservacao = """
+            drop table if exists estado_conservacao;        
+        """;
+
         String removerSeExisteTurno = """
             drop table if exists turno;        
         """;
@@ -95,6 +99,7 @@ public class RemoverTodasTabelas {
             statement.executeUpdate(removerSeExisteCategoria_carro);
             statement.executeUpdate(removerSeExisteTransmissao);
             statement.executeUpdate(removerSeExisteCor);
+            statement.executeUpdate(removerSeExisteEstadoConservacao);
             statement.executeUpdate(removerSeExisteTurno);
             statement.executeUpdate(removerSeExisteCargo);
             statement.executeUpdate(removerSeExisteForma_pagamento);

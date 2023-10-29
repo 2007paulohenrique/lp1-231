@@ -41,4 +41,8 @@ public class FormaDePagamento {
         nome = nomeFormatadodo.toString().replaceAll("\\s+", " ").trim();
         this.nome = nome;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

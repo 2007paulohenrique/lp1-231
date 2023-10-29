@@ -41,4 +41,8 @@ public class Transmissao {
         tipo = nomeFormatadodo.toString().replaceAll("\\s+", " ").trim();
         this.tipo = tipo;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

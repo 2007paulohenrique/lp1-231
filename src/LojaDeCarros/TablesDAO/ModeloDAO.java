@@ -132,7 +132,7 @@ public class ModeloDAO {
         return null;
     }
 
-    private Marca findMarcaDoModelo(int id) {
+    private static Marca findMarcaDoModelo(int id) {
         String sql = "SELECT * FROM marca WHERE id = ?;";
 
         try (
@@ -144,7 +144,7 @@ public class ModeloDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToMarca(rs);
+                return MarcaDAO.resultSetToMarca(rs);
             }
 
             rs.close();
@@ -158,12 +158,7 @@ public class ModeloDAO {
     }
 
 
-    private Marca resultSetToMarca(ResultSet rs) throws SQLException { 
-        return new Marca(
-            rs.getInt("id"),
-            rs.getString("nome")
-        );
-    }
+
 
     public List<Modelo> findModelosByMarca(Marca marca) {
         List<Modelo> modelos = new ArrayList<>();
@@ -192,7 +187,7 @@ public class ModeloDAO {
         return modelos;
     }
     
-    private Modelo resultSetToModelo(ResultSet rs) throws SQLException { 
+    protected static Modelo resultSetToModelo(ResultSet rs) throws SQLException { 
         return new Modelo(
             rs.getInt("id"),
             rs.getString("nome"),

@@ -1,5 +1,6 @@
 package LojaDeCarros.Tables;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public class Marca {
@@ -43,5 +44,4 @@ public class Marca {
     public void setId(int id) {
         this.id = id;
     }
-
 }

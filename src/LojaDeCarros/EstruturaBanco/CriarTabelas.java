@@ -63,21 +63,30 @@ public class CriarTabelas {
             );
         """;
 
+        String sqlEstado_conservacao = """
+            create table estado_conservacao(
+                id int auto_increment,
+                nome varchar(20) unique,
+                primary key(id)
+            );
+        """;
+
         String sqlUnidade = """
             create table unidade(
                 id int auto_increment,
                 id_transmissao int,
                 id_cor int,
                 id_versao int,
+                id_estado_conservacao int,
                 ano smallint,
                 placa varchar(8) unique,
                 quilometragem int,
-                estado_conservacao varchar(20),
                 valor_unitario decimal(9,2),
                 disponibilidade boolean,
                 foreign key(id_transmissao) references transmissao(id),
                 foreign key(id_cor) references cor(id),
                 foreign key(id_versao) references versao(id),
+                foreign key(id_estado_conservacao) references estado_conservacao(id),
                 primary key(id)
             );
         """;
@@ -238,6 +247,7 @@ public class CriarTabelas {
             statement.executeUpdate(sqlVersao);
             statement.executeUpdate(sqlTransmissao);
             statement.executeUpdate(sqlCor);
+            statement.executeUpdate(sqlEstado_conservacao);
             statement.executeUpdate(sqlUnidade);
             statement.executeUpdate(sqlEndereco);
             statement.executeUpdate(sqlCargo);

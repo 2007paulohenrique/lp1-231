@@ -1,43 +1,43 @@
 package LojaDeCarros.TablesDAO;
 
-import LojaDeCarros.Tables.CategoriaCarro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import LojaDeCarros.Conexao;
+import LojaDeCarros.Tables.Transmissao;
 
-public class CategoriaCarroDAO {
-    public CategoriaCarro create(CategoriaCarro categoriaCarro) throws SQLException {
+public class TransmissaoDAO { 
+
+    public Transmissao create(Transmissao transmissao) throws SQLException { 
         String sql = """
-        INSERT INTO categoria_carro (nome)
+        INSERT INTO transmissao (tipo)
         VALUES (?);
         """;
         try (
             Connection connection = Conexao.getConnection();
-            PreparedStatement statement = connection
-            .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, categoriaCarro.getNome());
+            statement.setString(1, transmissao.getTipo());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
-            if(rs.next()) {
-                categoriaCarro.setId(rs.getInt(1));
+            if (rs.next()) {
+                transmissao.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return categoriaCarro;
+            return transmissao;
         }
     }
 
-    public CategoriaCarro update(CategoriaCarro categoriaCarro) throws SQLException {
+    public Transmissao update(Transmissao transmissao) throws SQLException { 
         String sql = """
-        UPDATE categoria_carro
-        SET nome = ?
+        UPDATE transmissao
+        SET tipo = ?
         WHERE id = ?;
         """;
 
@@ -46,23 +46,23 @@ public class CategoriaCarroDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
 
-            statement.setString(1, categoriaCarro.getNome());
-            statement.setInt(2, categoriaCarro.getId());
+            statement.setString(1, transmissao.getTipo());
+            statement.setInt(2, transmissao.getId());
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                return categoriaCarro;
+                return transmissao;
             }
             return null;
 
-            } catch (SQLException e) {
-                return null;
-            }
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
-    /* 
+    /*
     public void delete(Integer id) {
-        String sql = "DELETE FROM categoria_carro WHERE id = ?;";
+        String sql = "DELETE FROM Transmissao WHERE id = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -75,13 +75,13 @@ public class CategoriaCarroDAO {
         }
     }
 
-    public void delete(CategoriaCarro categoriaCarro) {
-        delete(categoriaCarro.getId());
+    public void delete(Transmissao Transmissao) { 
+        delete(Transmissao.getId());
     }
     */
 
-    public CategoriaCarro findByNome(String nome) {
-        String sql = "SELECT * FROM categoria_modelo WHERE nome = ?;";
+    public Transmissao findByNome(String nome) { 
+        String sql = "SELECT * FROM transmissao WHERE nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -92,7 +92,7 @@ public class CategoriaCarroDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetTocategoriaCarro(rs);
+                return resultSetToTransmissao(rs);
             }
 
             rs.close();
@@ -105,10 +105,10 @@ public class CategoriaCarroDAO {
         return null;
     }
 
-    protected static CategoriaCarro resultSetTocategoriaCarro(ResultSet rs) throws SQLException {
-        return new CategoriaCarro(
+    protected static Transmissao resultSetToTransmissao(ResultSet rs) throws SQLException { 
+        return new Transmissao(
             rs.getInt("id"),
-            rs.getString("nome")
+            rs.getString("tipo")
         );
     }
 }

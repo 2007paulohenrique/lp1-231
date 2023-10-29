@@ -4,39 +4,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import LojaDeCarros.Conexao;
-import LojaDeCarros.Tables.Marca;
 
-public class MarcaDAO {
-    public Marca create(Marca marca) throws SQLException{
+import LojaDeCarros.Conexao;
+import LojaDeCarros.Tables.Cor;
+
+
+public class CorDAO {
+    public Cor create(Cor cor) throws SQLException {
         String sql = """
-        INSERT INTO marca (nome) VALUES
-        (?);
+        INSERT INTO cor (nome)
+        VALUES (?);
         """;
-        
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection
             .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, marca.getNome());
+            statement.setString(1, cor.getNome());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()) {
-                marca.setId(rs.getInt(1));
+                cor.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return marca;
+            return cor;
         }
     }
 
-    public Marca update(Marca marca) throws SQLException{
+    public Cor update(Cor cor) throws SQLException {
         String sql = """
-        UPDATE marca
+        UPDATE cor
         SET nome = ?
         WHERE id = ?;
         """;
@@ -46,12 +47,12 @@ public class MarcaDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
 
-            statement.setString(1, marca.getNome());
-            statement.setInt(2, marca.getId());
+            statement.setString(1, cor.getNome());
+            statement.setInt(2, cor.getId());
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                return marca;
+                return cor;
             }
             return null;
 
@@ -60,8 +61,28 @@ public class MarcaDAO {
             }
     }
 
-    public Marca findByNome(String nome) {
-        String sql = "SELECT * FROM marca WHERE nome = ?;";
+    /*
+    public void delete(Integer id) {
+        String sql = "DELETE FROM cor WHERE id = ?;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Cor cor) {
+        delete(cor.getId());
+    }
+    */
+
+    public Cor findByNome(String nome) {
+        String sql = "SELECT * FROM cor WHERE nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -72,7 +93,7 @@ public class MarcaDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToMarca(rs);
+                return resultSetToCor(rs);
             }
 
             rs.close();
@@ -85,12 +106,11 @@ public class MarcaDAO {
         return null;
     }
 
-    protected static Marca resultSetToMarca(ResultSet rs) throws SQLException {
-        return new Marca(
+    protected static Cor resultSetToCor(ResultSet rs) throws SQLException {
+        return new Cor(
             rs.getInt("id"),
             rs.getString("nome")
         );
     }
-}
-
     
+}
