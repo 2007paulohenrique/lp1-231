@@ -346,9 +346,4 @@ public class Funcionario extends Pessoa{
     public Cargo getCargo() {
         return cargo;
     }
-
-    public void data_registroParaResultSet(LocalDate data_registro){
-        this.data_registro = data_registro;
-    }
-
 }

@@ -69,16 +69,6 @@ public class CriarViews {
             order by advertencias desc;     
         """;
 
-        String sqlVendas_funcionarios = """
-            create view vendas_funcionarios as 
-            select fu.nome as nome, fu.cpf as cpf, count(ve.id_funcionario) as numero_vendas, sum(((un.valor_unitario + (un.valor_unitario*(ve.juros/100))) - ve.desconto)) as valor_vendas 
-            from funcionario fu
-            inner join venda ve on fu.id = ve.id_funcionario
-            inner join unidade un on un.id = ve.id_unidade
-            group by fu.nome, fu. cpf 
-            order by numero_vendas;    
-        """;
-
         try (Connection connection = Conexao.getConnection();
             Statement statement = connection.createStatement()) {
             statement.executeUpdate(sqlUnidades_para_venda);
@@ -87,7 +77,6 @@ public class CriarViews {
             statement.executeUpdate(sqlMelhores_funcionario_ultimo_mes);
             statement.executeUpdate(sqlDados_funcionarios);
             statement.executeUpdate(sqlFuncionarios_mais_advertidos);          
-            statement.executeUpdate(sqlVendas_funcionarios);          
         }
     }
 }

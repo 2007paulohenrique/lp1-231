@@ -1,6 +1,5 @@
 package LojaDeCarros.Tables;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public class Marca {

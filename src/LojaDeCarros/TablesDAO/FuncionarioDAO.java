@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -356,6 +357,30 @@ public class FuncionarioDAO {
         return null;
     }
 
+    public List<Funcionario> FindDadosFuncionarios(){
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String sql = "SELECT * FROM dados_funcionarios;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            Statement statement = connection.createStatement();
+        ) {
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                Funcionario funcionario = resultSetToFuncionario(rs);
+                funcionarios.add(funcionario);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return funcionarios;
+    }
+
     private Funcionario resultSetToFuncionario(ResultSet rs) throws SQLException {
         Funcionario funcionario = new Funcionario(
             rs.getInt("id"),
@@ -363,7 +388,7 @@ public class FuncionarioDAO {
             rs.getString("email"),
             rs.getString("contato"),
             rs.getString("cpf"),
-            (rs.getDate("data_nacsimento")).toLocalDate(), 
+            (rs.getDate("data_nascimento")).toLocalDate(), 
             findEnderecoDoFuncionario(rs.getInt("id_endereco")),
             rs.getDouble("salario_fixo"),
             rs.getShort("dia_pagamento"),

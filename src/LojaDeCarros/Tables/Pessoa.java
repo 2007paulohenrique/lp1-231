@@ -118,7 +118,7 @@ public abstract class Pessoa {
         if (!cpf.matches("^\\d{11}$")) {
             throw new RuntimeException("O cpf deve ser completo e sem \".\" ou \"-\". ");
         }
-        cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9);
+        this.cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9);
     }
 
     private void verificarIdade(LocalDate data_nascimento){
@@ -142,5 +142,9 @@ public abstract class Pessoa {
 
     public LocalDate getData_registro() {
         return data_registro;
+    }
+
+    public void data_registroParaResultSet(LocalDate data_registro){
+        this.data_registro = data_registro;
     }
 }
