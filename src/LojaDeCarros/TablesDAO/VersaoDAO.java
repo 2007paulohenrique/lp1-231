@@ -28,8 +28,7 @@ public class VersaoDAO {
             statement.setInt(1, versao.getModelo().getId());
             statement.setInt(2, versao.getCategoriaCarro().getId());
             statement.setString(3, versao.getNome());  
-            Date lancamento = Date.valueOf(versao.getLancamento());
-            statement.setDate(4, lancamento); 
+            statement.setDate(4, Date.valueOf(versao.getLancamento())); 
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();

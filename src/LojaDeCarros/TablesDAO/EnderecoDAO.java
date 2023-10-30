@@ -6,39 +6,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import LojaDeCarros.Conexao;
-import LojaDeCarros.Tables.Cargo;
+import LojaDeCarros.Tables.Endereco;
 
-// DAO = Data Access Object
-public class CargoDAO {
-    public Cargo create(Cargo cargo) throws SQLException {
+public class EnderecoDAO {
+    public Endereco create(Endereco endereco) throws SQLException {
         String sql = """
-        INSERT INTO cargo (nome)
-        VALUES (?);
+        INSERT INTO endereco (logradouro, numero, complemento, cep) 
+        VALUES (?, ?, ?, ?);"
         """;
+
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection
             .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setString(1, cargo.getNome());
+            statement.setString(1, endereco.getLogradouro());
+            statement.setShort(2, endereco.getNumero());
+            statement.setString(3, endereco.getComplemento());
+            statement.setString(4, endereco.getCep());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()) {
-                cargo.setId(rs.getInt(1));
+                endereco.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return cargo;
+            return endereco;
         }
     }
 
-    public Cargo update(Cargo cargo) throws SQLException {
+    public Endereco update(Endereco endereco) throws SQLException {
         String sql = """
-        UPDATE cargo
-        SET nome = ?
+        UPDATE endereco
+        SET logradouro = ?, numero = ?, complemento = ?, cep = ?
         WHERE id = ?;
         """;
 
@@ -47,22 +50,24 @@ public class CargoDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
 
-            statement.setString(1, cargo.getNome());
-            statement.setInt(2, cargo.getId());
+            statement.setString(1, endereco.getLogradouro());
+            statement.setShort(2, endereco.getNumero());
+            statement.setString(3, endereco.getComplemento());
+            statement.setString(4, endereco.getCep());
             int linhasAfetadas = statement.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                return cargo;
+                return endereco;
             }
             return null;
 
-            } catch (SQLException e) {
-                return null;
-            }
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
     public void delete(Integer id) {
-        String sql = "DELETE FROM cargo WHERE id = ?;";
+        String sql = "DELETE FROM endereco WHERE id = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -75,25 +80,19 @@ public class CargoDAO {
         }
     }
 
-    /* 
-    public void delete(Cargo cargo) {
-        delete(cargo.getId());
-    }
-    */
-
-    public Cargo findByNome(String nome) {
-        String sql = "SELECT * FROM cargo WHERE nome = ?;";
+    public Endereco findById(Integer id) {
+        String sql = "SELECT * FROM endereco WHERE id = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setString(1, nome);
+            statement.setInt(1, id);
 
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return resultSetToCargo(rs);
+                return resultSetToEndereco(rs);
             }
 
             rs.close();
@@ -106,10 +105,13 @@ public class CargoDAO {
         return null;
     }
 
-    protected static Cargo resultSetToCargo(ResultSet rs) throws SQLException {
-        return new Cargo(
+    protected static Endereco resultSetToEndereco(ResultSet rs) throws SQLException {
+        return new Endereco(
             rs.getInt("id"),
-            rs.getString("nome")
+            rs.getString("logradouro"),
+            rs.getShort("numero"),
+            rs.getString("complemento"),
+            rs.getString("cep")
         );
     }
 }

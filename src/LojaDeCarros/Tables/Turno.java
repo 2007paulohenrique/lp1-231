@@ -54,4 +54,8 @@ public class Turno {
             
             return (short) (ChronoUnit.MINUTES.between(inicio, fim)); 
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

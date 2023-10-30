@@ -64,21 +64,45 @@ public class Endereco {
 
         logradouro = logradouroFormatado.toString().replaceAll("\\s+", " ").trim();
 
-        if (numero > 10000 || numero < 1 || !cep.matches("\\d{8}")) {
-            throw new RuntimeException("O número deve conter apenas digito e o cep tem que ser inserido sem \"-\".");
+        this.logradouro = logradouro;
+        setNumero(numero);
+        setComplemento(complemento);
+        setCep(cep);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setComplemento(String complemento) {
+        if (complemento == null) {
+            this.complemento = complemento;
+            return;
         }
 
-        cep = cep.substring(0, 5) + "-" + cep.substring(5);
-        
         if ((!complemento.matches("^[\\p{L}çÇ+ [\\dA-Z]+]+$") || complemento.length() > 100) && complemento != null) {
             throw new RuntimeException("O complemento deve ter a forma de subdivisão do local do endereço e o nome da subdivisão. Caso tenha mais de uma subdivisão, coloque da maior para a menor.");
         }
 
         complemento = complemento.substring(0, 1).toUpperCase() + complemento.substring(1).toLowerCase();
 
-        this.logradouro = logradouro;
-        this.numero = numero;
         this.complemento = complemento;
+    }
+
+    public void setNumero(short numero) {
+        if (numero > 10000 || numero < 1) {
+            throw new RuntimeException("O número deve conter apenas digitos.");
+        }
+
+        this.numero = numero;
+    }
+
+    public void setCep(String cep) {
+        if (!cep.matches("\\d{8}")) {
+            throw new RuntimeException("Se certifique que o CEP foi inserido sem \"-\".");
+        }
+        cep = cep.substring(0, 5) + "-" + cep.substring(5);
+
         this.cep = cep;
     }
 } 

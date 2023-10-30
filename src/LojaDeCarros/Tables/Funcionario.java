@@ -24,7 +24,7 @@ public class Funcionario extends Pessoa{
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos,LocalTime intervalo, Cargo cargo, Turno turno){
+    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo, Cargo cargo, Turno turno){
         super(id, nome, email, contato, cpf, data_nascimento, endereco);
         Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
         setSalario_fixo(salario_fixo);
@@ -160,6 +160,14 @@ public class Funcionario extends Pessoa{
         return disponivel;
     }
 
+    public LocalTime[] getIntervalos() {
+        return intervalos;
+    }
+
+    public short getDuracaoIntervalosMinutos() {
+        return duracaoIntervalosMinutos;
+    }
+
     public void setDisponivel() {
         disponivel = !disponivel;
     }
@@ -225,7 +233,9 @@ public class Funcionario extends Pessoa{
     }
 
     public void adicionarIntervalo(LocalTime intervalo){
-        verificarIntervalo(intervalo);
+        if (intervalo == null) {
+            return;
+        }
         if (turno.getDuracaoMinutos() < 7*60 && intervalos[0] != null) {
             throw new RuntimeException("Um funcionário com um turno com menos de 7 horas de duração não pode ter mais de um intervalo.");
         }
@@ -332,4 +342,13 @@ public class Funcionario extends Pessoa{
             }   
         }
     }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void data_registroParaResultSet(LocalDate data_registro){
+        this.data_registro = data_registro;
+    }
+
 }

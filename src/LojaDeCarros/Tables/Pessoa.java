@@ -127,4 +127,20 @@ public abstract class Pessoa {
         }
         this.data_nascimento = data_nascimento;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getData_nascimento() {
+        return data_nascimento;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public LocalDate getData_registro() {
+        return data_registro;
+    }
 }
