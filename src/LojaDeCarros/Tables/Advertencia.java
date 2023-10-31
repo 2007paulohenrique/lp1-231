@@ -41,4 +41,12 @@ public class Advertencia {
         }
         this.gravidade = gravidade;
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

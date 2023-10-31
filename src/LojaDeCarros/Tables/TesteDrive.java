@@ -41,13 +41,38 @@ public class TesteDrive {
         return fim;
     }
 
-    public void marcarFimTesteDrive(){
+    public LocalDateTime marcarFimTesteDrive(){
+        if (fim != null) {
+            throw new RuntimeException("O teste drive já foi feito.");
+        }
         fim = LocalDateTime.now();
+        return fim;
     }
 
     private void verificarFuncionarioEUnidade(){
         if (funcionario.getDisponivel() == false || unidade.getDisponibilidade() == false) {
             throw new RuntimeException("O funcionário ou a unidade não estão disponíveis no momento, talvez tenha ocorrido um erro de digitação.");
         }
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void inicioEFimParaResultSet(LocalDateTime inicio, LocalDateTime fim){
+        this.inicio = inicio;
+        this.fim = fim;
     }
 }

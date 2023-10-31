@@ -194,7 +194,7 @@ public class ClienteDAO {
         return null;
     }
 
-    private Endereco findEnderecoDoCliente(int id){
+    private static Endereco findEnderecoDoCliente(int id){
         String sql = "SELECT * FROM endereco WHERE id = ?;";
 
         try (
@@ -219,7 +219,7 @@ public class ClienteDAO {
         return null;
     }
 
-    private Cliente resultSetToCliente(ResultSet rs) throws SQLException {
+    protected static Cliente resultSetToCliente(ResultSet rs) throws SQLException {
          Cliente cliente = new Cliente(
             rs.getInt("id"),
             rs.getString("nome"),
@@ -229,6 +229,7 @@ public class ClienteDAO {
             (rs.getDate("data_nacsimento")).toLocalDate(), 
             findEnderecoDoCliente(rs.getInt("id_endereco"))
         );
+        
         cliente.data_registroParaResultSet(rs.getDate("data_registro").toLocalDate());
         return cliente;
     }

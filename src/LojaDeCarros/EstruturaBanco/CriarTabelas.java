@@ -117,8 +117,8 @@ public class CriarTabelas {
             create table advertencia(
                 id int auto_increment, 
                 id_funcionario int,
-                motivo text,
                 gravidade tinyint,
+                motivo text,
                 foreign key(id_funcionario) references funcionario(id),
                 primary key(id)
             );

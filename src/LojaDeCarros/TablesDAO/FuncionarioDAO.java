@@ -282,7 +282,7 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
-    private Endereco findEnderecoDoFuncionario(int id){
+    private static Endereco findEnderecoDoFuncionario(int id){
         String sql = "SELECT * FROM endereco WHERE id = ?;";
 
         try (
@@ -307,7 +307,7 @@ public class FuncionarioDAO {
         return null;
     }
 
-    private Turno findTurnoDoFuncionario(int id){
+    private static Turno findTurnoDoFuncionario(int id){
         String sql = "SELECT * FROM turno WHERE id = ?;";
 
         try (
@@ -332,7 +332,7 @@ public class FuncionarioDAO {
         return null;
     }
 
-    private Cargo findCargoDoFuncionario(int id){
+    private static Cargo findCargoDoFuncionario(int id){
         String sql = "SELECT * FROM cargo WHERE id = ?;";
 
         try (
@@ -381,7 +381,31 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
-    private Funcionario resultSetToFuncionario(ResultSet rs) throws SQLException {
+    public List<Funcionario> FindFuncionariosMaisAdvertidos(){
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String sql = "SELECT * FROM funcionarios_mais_advertidos;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            Statement statement = connection.createStatement();
+        ) {
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                Funcionario funcionario = resultSetToFuncionario(rs);
+                funcionarios.add(funcionario);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return funcionarios;
+    }
+
+    protected static Funcionario resultSetToFuncionario(ResultSet rs) throws SQLException {
         Funcionario funcionario = new Funcionario(
             rs.getInt("id"),
             rs.getString("nome"),

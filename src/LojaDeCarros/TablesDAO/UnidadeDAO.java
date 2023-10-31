@@ -337,7 +337,7 @@ public class UnidadeDAO {
         return unidades;
     }
 
-    private EstadoConservacao findEstadoConservacaoDaUnidade(int id) {
+    private static EstadoConservacao findEstadoConservacaoDaUnidade(int id) {
         String sql = "SELECT * FROM estado_conservacao WHERE id = ?;";
 
         try (
@@ -362,7 +362,7 @@ public class UnidadeDAO {
         return null;
     }
 
-    private Versao findVersaoDaUnidade(int id) {
+    private static Versao findVersaoDaUnidade(int id) {
         String sql = "SELECT * FROM versao WHERE id = ?;";
 
         try (
@@ -387,7 +387,7 @@ public class UnidadeDAO {
         return null;
     }
 
-    private Transmissao findTransmissaoDaUnidade(int id) {
+    private static Transmissao findTransmissaoDaUnidade(int id) {
         String sql = "SELECT * FROM transmissao WHERE id = ?;";
 
         try (
@@ -412,7 +412,7 @@ public class UnidadeDAO {
         return null;
     }
 
-    private Cor findCorDaUnidade(int id) {
+    private static Cor findCorDaUnidade(int id) {
         String sql = "SELECT * FROM cor WHERE id = ?;";
 
         try (
@@ -437,7 +437,7 @@ public class UnidadeDAO {
         return null;
     }
 
-    private Unidade resultSetToUnidade(ResultSet rs) throws SQLException { 
+    protected static Unidade resultSetToUnidade(ResultSet rs) throws SQLException { 
         return new Unidade(
             rs.getInt("id"),
             rs.getShort("ano"),
