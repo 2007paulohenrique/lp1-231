@@ -53,43 +53,43 @@ public class RegistroPonto {
         funcionario.setDisponivel();
     }
 
-    private void calcularHorasDeTrabalhoDeDiferenca(){
+    public short calcularHorasDeTrabalhoDeDiferenca(){
         short minutosTrabalhadosDia = (short) ChronoUnit.MINUTES.between(entrada, saida);
         short duracaoTurno = funcionario.getTurno().getDuracaoMinutos();
 
-        if (minutosTrabalhadosDia + 20 < duracaoTurno) {
-            funcionario.ModificarHorasDeTrabalhoDeDiferenca((minutosTrabalhadosDia - duracaoTurno)/60);
-            Advertencia advertencia = new Advertencia((byte) 2, funcionario, "trabalhou mais de 20 minutos a menos do que deveria.");
-            funcionario.addAdvertencia(advertencia);
-        }
-
-        if (minutosTrabalhadosDia > duracaoTurno + 120) {
-            funcionario.ModificarHorasDeTrabalhoDeDiferenca(2);
-        } else if (minutosTrabalhadosDia > duracaoTurno + 20) {
-            funcionario.ModificarHorasDeTrabalhoDeDiferenca((minutosTrabalhadosDia - duracaoTurno)/60);
-        } else {
-            funcionario.ModificarHorasDeTrabalhoDeDiferenca(0);
-        }
+        return (short) (minutosTrabalhadosDia - duracaoTurno);
     }
 
-    private void verificarEntrada(){
+    public Advertencia verificarEntrada(){
         if (inicioTurno.isBefore(LocalTime.of(23, 50)) && !inicioTurno.isBefore(LocalTime.of(0, 10))) {
             if (!entradaHM.isAfter(inicioTurno.plusMinutes((60*23) + 50)) && !entradaHM.isBefore(inicioTurno.plusMinutes(10))) {
                 Advertencia advertencia = new Advertencia((byte) 2, funcionario, "Chegou com mais de 10 minutos de diferença em relação ao inicio do turno.");
                 funcionario.addAdvertencia(advertencia);
+                return advertencia;
             }
 
         } else if (inicioTurno.isBefore(LocalTime.of(0, 10))) {
             if (!entradaHM.isBefore(inicioTurno.plusMinutes(10)) || !entradaHM.isAfter(inicioTurno.plusMinutes((60*23) + 50))) {
                 Advertencia advertencia = new Advertencia((byte) 2, funcionario, "Chegou com mais de 10 minutos de diferença em relação ao inicio do turno.");
                 funcionario.addAdvertencia(advertencia);
+                return advertencia;
             }
 
         } else {
             if (!entradaHM.isAfter(inicioTurno.plusMinutes((60*23) + 50)) || !entradaHM.isBefore(inicioTurno.plusMinutes(10))) {
                 Advertencia advertencia = new Advertencia((byte) 2, funcionario, "Chegou com mais de 10 minutos de diferença em relação ao inicio do turno.");
                 funcionario.addAdvertencia(advertencia);
+                return advertencia;
             }
         }
+        return null;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

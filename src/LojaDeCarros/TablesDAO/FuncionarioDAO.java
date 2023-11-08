@@ -71,6 +71,7 @@ public class FuncionarioDAO {
             dia_pagamento = ?,
             salario_fixo = ?,
             comissao = ?,
+            horas_extras = ?,
             intervalo1 = ?,
             intervalo2 = ?,
             duracao_intervalo = ? 
@@ -91,6 +92,7 @@ public class FuncionarioDAO {
             statement.setShort(7, funcionario.getDia_pagamentoOriginal());
             statement.setDouble(8, funcionario.getSalario_fixo());
             statement.setDouble(9, funcionario.getComissao());
+            statement.setDouble(10, funcionario.getHorasDeTrabalhoDeDiferenca());
             LocalTime[] intervalos = funcionario.getIntervalos();
             statement.setTime(10, Time.valueOf(intervalos[0]));
             statement.setTime(11, Time.valueOf(intervalos[1]));

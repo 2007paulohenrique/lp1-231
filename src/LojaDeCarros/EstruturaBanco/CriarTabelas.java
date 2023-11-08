@@ -166,6 +166,7 @@ public class CriarTabelas {
                 dia_pagamento tinyint,
                 salario_fixo decimal(10,2),
                 comissao decimal(10,2),
+                horas_extras decimal(4,2),
                 intervalo1 time,
                 intervalo2 time,
                 duracao_intervalo tinyint,
