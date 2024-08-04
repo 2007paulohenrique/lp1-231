@@ -6,11 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//stm - executar codigo
-//pstm - inserir codigo -?- where, inserts...
-
-//CONSULTAS
-
 public class ListarTodosAlunos {
     public static void main(String[] args) throws SQLException{
         String url = "jdbc:mysql://localhost/estudante?user=estudante&password=estudante&useSSL=true";
@@ -18,9 +13,15 @@ public class ListarTodosAlunos {
 
         String sql = "SELECT* FROM alunos;";
         Statement stm = conn.createStatement();
+
+        // ResultSet - representa o resultado de uma consulta - associado a um statement ou preparedstatement
+        // executeQuery(sql) - retorna o resultado de uma consulta 
         ResultSet rs = stm.executeQuery(sql);
 
+        // rs.next() - enquanto houver uma proxima linha de resultado
         while(rs.next()){
+            // armazenar o valor que estao nas colunas especificadas - prestar atencao no tipo do valor que esta no banco de dados
+
             int id = rs.getInt("id");
             String nome = rs.getString("nome");
             String email = rs.getString("email");

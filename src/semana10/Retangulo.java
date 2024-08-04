@@ -1,13 +1,13 @@
 package semana10;
 
-//classe representa um conceito que deve ser implementado no programa
+// classe representa um conceito que deve ser implementado no programa
 public class Retangulo {
-    
-    //atributos = dados
+
+    // atributos = dados
     public double base;
     public double altura;
 
-    //metodos, nao precisa de static e nem de parametros
+    // metodos
     public double calcularArea(){
         return base*altura;
     }

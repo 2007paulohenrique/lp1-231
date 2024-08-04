@@ -17,34 +17,60 @@ public class Conta {
         return correntista;
     }
 
-
-
     public Conta(int codigo, String correntista){
-        if (codigo <= 0) {
-            throw new RuntimeException("codigo invalido");
+        setCodigo(codigo);
+        setCorrentista(correntista);
+        setSaldo(0);
+    }
+
+    public double depositar(double valor) {
+        if (valor > 0) {
+            setSaldo(this.saldo + valor);
         }
 
+        return valor;
+    }
+
+    public double sacar(double valor) {
+        if (valor > 0 && valor <= this.saldo) {
+            setSaldo(this.saldo - valor);
+        }
+
+        return valor;
+    }
+
+    public double transferir(double valor){
+        if (valor > 0 && valor <= this.saldo) {
+            setSaldo(this.saldo - valor);
+        }
+
+        return valor;
+    }
+
+    private void setSaldo(double saldo) {
+        if (saldo < 0) {
+            throw new RuntimeException("o correntista deve ter entre 4 e 101 caracteres");
+
+        }
+
+        this.saldo = saldo;
+    }
+
+    public void setCorrentista(String correntista) {
         if (correntista.length() < 5 || correntista.length() > 100) {
             throw new RuntimeException("o correntista deve ter entre 4 e 101 caracteres");
+
         }
 
-        this.codigo=codigo;
-        this.correntista=correntista;
-        saldo = 0;
+        this.correntista = correntista;
     }
 
-    public double sacar(double valordosaque) {
-        saldo-=valordosaque;
-        return valordosaque;
-    }
+    private void setCodigo(int codigo) {
+        if (codigo <= 0) {
+            throw new RuntimeException("codigo invalido");
 
-    public double depositar(double valordodeposito) {
-        saldo+=valordodeposito;
-        return valordodeposito;
-    }
+        }
 
-    public double transferir(double valordatransferencia){
-        saldo-=valordatransferencia;
-        return valordatransferencia;
+        this.codigo = codigo;
     }
 }

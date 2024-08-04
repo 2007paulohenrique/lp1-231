@@ -14,39 +14,13 @@ public class ExerciciosRevisao {
     }
 
     public static int PegarMaiorvalor(int n1, int n2, int n3) {
-        if(n1 > n2 && n1 > n3){
-            return n1;
-        }else if(n2 > n1 && n2 > n3) {
-            return n2;
-        } else if(n3 > n1 && n3 > n2){
-            return n3;
-        } else if (n1 == n2 && n1 > n3) {
-            return n1;
-        } else if (n2 == n3 && n2 > n1) {
-            return n2;
-        } else if (n1 == n3 && n1 > n2) {
-            return n3;
-        } else {
-            return n1;
-        }
+        int maiorEntren2n3 = Math.max(n2, n3);
+        return Math.max(maiorEntren2n3, n1);
     }
 
     public static int PegarMenorvalor(int n1, int n2, int n3) {
-        if(n1 < n2 && n1 < n3){
-            return n1;
-        }else if(n2 < n1 && n2 < n3) {
-            return n2;
-        } else if(n3 < n1 && n3 < n2){
-            return n3;
-        } else if (n1 == n2 && n1 < n3) {
-            return n1;
-        } else if (n2 == n3 && n2 < n1) {
-            return n2;
-        } else if (n1 == n3 && n1 < n2) {
-            return n3;
-        } else {
-            return n1;
-        } 
+        int menorEntren2n3 = Math.min(n2, n3);
+        return Math.min(menorEntren2n3, n1);
     }
 
     public static double[] PegarArray(double n1, double n2, double n3) {
@@ -71,9 +45,7 @@ public class ExerciciosRevisao {
     public static double pegarMenorValorArray(double[] numero) {
         double menor = numero[0];
         for (int i = 1; i < numero.length; i++) {
-            if (numero[1] < menor) {
-                menor = numero[i];
-            }
+            menor = Math.min(menor, numero[i]);
         }
         return menor;
     }
@@ -81,9 +53,7 @@ public class ExerciciosRevisao {
     public static double pegarMaiorValorArray(double[] numero) {
         double maior = numero[0];
         for (int i = 1; i < numero.length; i++) {
-            if (numero[1] > maior) {
-                maior = numero[i];
-            }
+            maior = Math.max(maior, numero[i]);
         }
         return maior;
     }
@@ -102,10 +72,7 @@ public class ExerciciosRevisao {
         return resultado;
     }
     
-
     public static void main(String[] args) {
-        //Scanner sc = new Scanner(System.in);
-
         double n1= 2.5;
         double n2= 5.5;
         double n3= 8.5;

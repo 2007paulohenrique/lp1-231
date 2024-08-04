@@ -1,5 +1,6 @@
 package semana17;
 
+// classe abstrata  - nao pode ser instanciada - subclasses deve extender ela e usar seus atributos e metodos
 public abstract class Conta {
     protected double saldo;
     protected double tarifa;

@@ -4,8 +4,6 @@ public class Metodos{
 
     public static void main(String[] args) {
         
-        System.out.println(Math.sqrt(25.0)); // Math.sqrt() - raiz quadrada
-
         imprimirpalavra("ola mundo");
 
         // para usar metodos de uma classe em um arquivo dentro do mesmo pacote - Classe.metodo(parametros)
@@ -21,7 +19,7 @@ public class Metodos{
 
     // public - qualquer classe em qualquer pacote pode acessar o metodo
     // private - somente a classe do metodo pode acessa-lo
-    // protected - somente as classes do mesmo pacote pode acessa-lo
+    // protected - somente as classes do mesmo pacote ou subclasses pode acessa-lo
 
     // static - o metodo fica associado a classe e nao a objetos dela, assim eu posso usa-lo sem criar uma instancia da classe
 

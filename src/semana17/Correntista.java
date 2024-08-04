@@ -12,7 +12,11 @@ public class Correntista {
         this.nome=nome;
     }
 
+    // metodo add - adiciona um objeto a uma lista - objeto como parametro
+
     public void addConta(Conta conta){
+        // adiciona o objeto passado como parametro a lista
+
         this.contas.add(conta);
     }
 

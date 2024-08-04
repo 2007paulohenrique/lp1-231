@@ -16,24 +16,24 @@ public class Quadrado {
     
     }
 
-    //private o valor do atributo não pode ser visualizado nem modificado
-    //serve para testar o valor de um atributo, logo ele vai ser private
-    /*metodos setter e getter 
-    get devolve um valor de um atributo privado 
-    get = public tipo atributo getNome do atributo(){ return atributo privado }
-    *//*
-    set altera o valor de um atributo privado de um objeto ja criado 
-    se um requisito dizer que n se pode modificar esse atributo, n sera necessario set 
-    set = public void setNome do atributo(tipo do atributo nome do atributo){this.atributo = atributo}
-    *//*
-    set privado se usa quando há dois construtores iguais e há uma validação igual neles e
-    nao se pode alterar o valor de um atributo privado de um objeto ja criado
-    */
+    // private atributo - o valor do atributo não pode ser visualizado nem modificado
+
+    // métodos get e set
+
+    // get - devolve um valor de um atributo privado 
+    // get - public tipoAtributo getAtributo(){ return atributo privado }
 
     public double getLado(){
         return lado;
 
     }
+    
+    // set - altera o valor de um atributo privado de um objeto ja criado 
+    // set - necessario somente se o atributo tiver que ser modificado em algum possivel momento
+    // set = public void setAtributo(Tipo atributo){this.atributo = atributo}
+    // set privado - se usa quando há um atributo que tenha que ser imutavel apos criar um objeto
+    // ou quando ha uma logica de validacao que seja usada somente dentro da classe
+    // nao se pode alterar o valor de um atributo privado de um objeto ja criado sem o metodo set
 
     public void setLado(double lado){
         if (lado <= 0) {

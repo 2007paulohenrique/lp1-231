@@ -11,8 +11,14 @@ public class Quadrado {
         return lado*lado;
     }
 
-    //metodo construtor
+    // metodo construtor - public Classe(parametros)
+
+    // parametros - ao criar um objeto da classe, o parametro tem que ser passado
+    // sempre algo que e preciso ou fundamental para esse objeto
+    // parametro - um atributo da classe
+ 
     public Quadrado(double lado){
-        this.lado=lado;
+        // this - indica um atributo da classe e objeto que sera criado
+        this.lado = lado;
     }
 }

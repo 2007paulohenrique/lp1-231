@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Tela{
     private ArrayList<FiguraGeometrica> figuras;
 
-    //iniciar o arraylist sempre
     public Tela(){
         figuras=new ArrayList<>();
     }

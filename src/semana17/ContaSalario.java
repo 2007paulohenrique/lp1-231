@@ -6,5 +6,4 @@ public class ContaSalario extends Conta{
         super(tarifa, correntista);
         saldo=0;
     }
-    
 }

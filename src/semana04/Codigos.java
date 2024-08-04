@@ -6,10 +6,6 @@ public class Codigos {
 
         String cdg = "ab1010";
 
-        cdg.length(); // length() - tamanho da string
-
-        cdg.substring(0, 2); // substring(indiceInicial, indiceFinal) - caracteres de um indice ate outro de uma string
-
         // regex - expressao regular - padrao de busca - validacao de strings
         
         /*
@@ -29,17 +25,16 @@ public class Codigos {
             {n}: Corresponde exatamente a n ocorrências do elemento anterior.
             {n,}: Corresponde a n ou mais ocorrências do elemento anterior.
             {n,m}: Corresponde entre n e m ocorrências do elemento anterior.
+
         Classes de Caracteres:
             [abc]: Corresponde a qualquer caractere a, b, ou c.
             [^abc]: Corresponde a qualquer caractere que não seja a, b, ou c.
             [a-z]: Corresponde a qualquer caractere minúsculo de a a z.
             [A-Z]: Corresponde a qualquer caractere maiúsculo de a a z.
+            
         Ancoragem:
             ^: Corresponde ao início da linha.
             $: Corresponde ao final da linha.
-        Grupos e Alternativas:
-            (abc): Define um grupo.
-            a|b: Corresponde a a ou b.
         */
 
         String regex = "^BR\\d{4}X$"; // cria um regex

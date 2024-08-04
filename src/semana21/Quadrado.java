@@ -1,6 +1,6 @@
 package semana21;
 
-//para implementar interface seguir abaixo
+// implements - implementacao de interface
 
 public class Quadrado implements FiguraGeometrica{
     private double lado;
@@ -9,6 +9,7 @@ public class Quadrado implements FiguraGeometrica{
         this.lado=lado;
     }
 
+    // @Override - usado para sobrescrever metodo da interface implementada 
     @Override
     public double calcularArea(){
         return lado*lado;

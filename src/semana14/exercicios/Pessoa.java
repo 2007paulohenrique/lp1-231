@@ -11,7 +11,7 @@ public class Pessoa {
         return altura;
     }
 
-     public Pessoa(double peso, double altura){
+    public Pessoa(double peso, double altura){
         this.peso=peso;
         this.altura=altura;
     }
