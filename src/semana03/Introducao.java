@@ -3,51 +3,58 @@ package semana03;
 import java.util.Scanner;
 
 public class Introducao{
-
+    @SuppressWarnings("unused")
     public static void main(String[] args){
+        //tipos primitivos
 
-        //tipo primitivos
+        //inteiros
+        byte numeroByte = 100;
+        short numeroShort = 20000;
+        int numeroInt = 10000000;
+        long numeroLong = 100000000L;
 
-        //inteiro
-        //byte, short, int, long
+        //byte // -128 a 127 - 1 byte
+        //short // -32.768 a 32.767 - 2 bytes
+        //int // -2.147.483.648 a 2.147.483.647 - 4 bytes
+        //long // -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807 - 8 bytes - necessario colocar "L" ao final do valor na declaracao
 
-        //byte n1 = 100; //-128 a 127 - 1 byte
-        //short n2 = 3000; //-32768 a 32767 - 2 bytes
-        //int n3 = 43453453; //2 bilhões - 4 bytes
-        //long n4 = 53453452; //8 bytes
 
-        //ponto flutuante
+        //ponto flutuante - numeros com casas decimais
 
-        //float nota1 = 1.232f;
-        //double nota2 = 2.534252;
+        float numeroFloat = 1.232f;
+        double numeroDouble = 2.534252;
 
-        //char
+        //float // aproximadamente 7 casas decimais - 4 bytes - necessario colocar "f" ao final do valor na declaracao
+        //double // aproximadamente 15 casas decimais - 8 bytes
 
-        //char letra = 'a';
+
+        //char - valor entre ''
+
+        char letra = 'a';
+
 
         //boolean
 
-        //boolean ligado = true;
-        //boolean teste = false;
+        boolean booleanTrue = true;
+        boolean booleanFalse = false;
 
-        //string
+
+        //string - valor entre ""
 
         String nome = "paulo henrique";
 
         System.out.println(nome);
-        System.out.println(nome.toLowerCase());
-        System.out.println(nome.toUpperCase());
+        System.out.println(nome.toLowerCase()); // converte todas as letras da string para minusculo
+        System.out.println(nome.toUpperCase()); // converte todas as letras da string para maiusculo
 
 
-        //variaveis e constantes
+        // declaracao de variaveis e constantes
 
-        //int idade = 10;
-        //int idade2;
-
-        //double nmr = 10.1;
+        final float PI = 3.14f; // final - valor constante
+        int numeroVariavel; // variavel
 
         //entrada e saida de dados
-        //entrada= scanner
+        //entrada = scanner
 
         Scanner sc = new Scanner(System.in);
 
@@ -60,7 +67,5 @@ public class Introducao{
         System.out.println(nomeinformado + " " + idadeinformada);
 
         sc.close();
-
-
     }
 }

@@ -4,22 +4,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+// classe que testa os metodos de uma determinada classe
+// forma eficiente de testar os metodos de uma classe passando diferentes valores como parametro
+
 public class CalculadoraTeste {
     
     @Test
     public void somaDoisNumerosPositivos() {
         
-        //Arrange
+        //Arrange - atribuicao de valores aos que serao os parametros do metodo testado
         double numero1 = 10.0;
         double numero2 = 5.0;
 
-        //act
+        //act - criacao da variavel que armazena o valor retornado do metodo com os valores anteriores passados como parametro
         double soma = Calculadora.somar(numero1, numero2);
 
-        //Assert - numero esperado e o valor do objeto
+        //Assert - forma de testar um metodo com certos valores nos parametros - (numero esperado, variavel com valor do metodo)
         assertEquals(15.0, soma);
-
-
     }
 
     @Test
@@ -31,8 +32,6 @@ public class CalculadoraTeste {
         double soma = Calculadora.somar(numero1, numero2);
 
         assertEquals(5.0, soma);
-
-
     }
 
     @Test
@@ -44,8 +43,6 @@ public class CalculadoraTeste {
         double soma = Calculadora.somar(numero1, numero2);
 
         assertEquals(-15.0, soma);
-
-
     }
 
     @Test
@@ -57,8 +54,6 @@ public class CalculadoraTeste {
         double subtracao = Calculadora.subtrair(numero1, numero2);
 
         assertEquals(5.0, subtracao);
-
-
     }
 
     @Test
@@ -70,8 +65,6 @@ public class CalculadoraTeste {
         double subtracao = Calculadora.subtrair(numero1, numero2);
 
         assertEquals(-5.0, subtracao);
-
-
     }
     
     @Test
@@ -83,8 +76,6 @@ public class CalculadoraTeste {
         double subtracao = Calculadora.subtrair(numero1, numero2);
 
         assertEquals(15.0, subtracao);
-
-
     }
 
 
@@ -97,8 +88,6 @@ public class CalculadoraTeste {
         double multiplicacao = Calculadora.multiplicar(numero1, numero2);
 
         assertEquals(50.0, multiplicacao);
-
-
     }
 
     @Test
@@ -110,8 +99,6 @@ public class CalculadoraTeste {
         double multiplicacao = Calculadora.multiplicar(numero1, numero2);
 
         assertEquals(50.0, multiplicacao);
-
-
     }
 
     @Test
@@ -123,8 +110,6 @@ public class CalculadoraTeste {
         double multiplicacao = Calculadora.multiplicar(numero1, numero2);
 
         assertEquals(-50.0, multiplicacao);
-
-
     }
 
     @Test
@@ -136,8 +121,6 @@ public class CalculadoraTeste {
         double divisao = Calculadora.dividir(numero1, numero2);
 
         assertEquals(5.0, divisao);
-
-
     }
     public void dividirDoisNumerosPositivos() {
     
@@ -147,8 +130,6 @@ public class CalculadoraTeste {
         double divisao = Calculadora.dividir(numero1, numero2);
 
         assertEquals(2.0, divisao);
-
-
     }
 
     @Test
@@ -160,8 +141,6 @@ public class CalculadoraTeste {
         double divisao = Calculadora.dividir(numero1, numero2);
 
         assertEquals(2.0, divisao);
-
-
     }
 
     @Test
@@ -173,8 +152,5 @@ public class CalculadoraTeste {
         double divisao = Calculadora.dividir(numero1, numero2);
 
         assertEquals(-2.0, divisao);
-
-
     }
-
 }

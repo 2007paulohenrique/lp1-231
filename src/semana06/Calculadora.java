@@ -1,7 +1,8 @@
 package semana06;
 
-public class Calculadora {
+// classe para métodos de calculo
 
+public class Calculadora {
     public static double somar(double numero1, double numero2) {
         return numero1 + numero2;
         
@@ -20,7 +21,6 @@ public class Calculadora {
     public static double dividir(double numero1, double numero2) {
         return numero1/numero2;
     }
-
 
     public static void main(String[] args) {
         System.out.println(somar(10, 15));
