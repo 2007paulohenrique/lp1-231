@@ -60,7 +60,9 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
 
 - semana4
 
-    - Array.
+    - Arrays:
+        - Adicionar e substituir elementos.
+        - Consultas.
     - Estruturas de controle:
         - while.
         - do while.

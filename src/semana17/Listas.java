@@ -6,7 +6,9 @@ import java.util.List;
 public class Listas {
     
     public static void main(String[] args) {
-        // lista - List<Classe> nomeDaLista; - armazena objetos de uma mesma classe
+        // lista - List<Classe> nomeDaLista; - colecao de objetos de uma mesma classe
+        // uma das interfaces de Collection - mais informacoes no repositorio do link:
+        // https://github.com/2007paulohenrique/lp2-331
 
         List<String> strings = new ArrayList<>();
         List<String> strings2 = new ArrayList<>();

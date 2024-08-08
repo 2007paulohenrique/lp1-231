@@ -3,25 +3,6 @@ package semana04;
 public class EstruturaControle {
     public static void main(String[] args) {
 
-        // arrays - colecao de varios dados
-
-        double n1 = 10.0;
-        double n2 = 7.5;
-        double n3 = 3.4;
-
-        // array de double com capacidade de armazenar 3 valores
-        
-        double[] notas = new double[3]; // tipoDasVariaveisDoArray[] nome = new tipoDasVariaveisDoArray[tamanho do array]
-
-        // indice inicial do array e 0
-
-        // nome[posicao do array] - para acessar um elemento numa posicao especifica do array
-
-        notas[0] = n1;
-        notas[1] = n2;
-        notas[2] = n3;
-
-
         //  if - a condicao dentro do if tem que retornar um boolean - caso seja true, e executado o if, caso false, ignorado
 
         int idade = 17;
@@ -122,9 +103,15 @@ public class EstruturaControle {
         }
 
 
-        // foreach - recomendado para ler array - le todos os valores da posicao 0 ate a ulltima do array nessa ordem
+        // foreach - recomendado para ler array e colecoes - le todos os valores da posicao 0 ate a ulltima do array nessa ordem
         // for (tipoDasVariaveisDoArray nomeVariavel : array)
         // foreach e executado x vezes - x = tamanho do array
+
+        double[] notas = new double[3]; 
+
+        notas[0] = 10.0;
+        notas[1] = 5.7;
+        notas[2] = 2.5;
 
         for (Double nota : notas) {
             System.out.println(nota);
