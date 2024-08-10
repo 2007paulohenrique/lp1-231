@@ -32,18 +32,18 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
 
 ## Conteúdos - /src
 
-- **semana1**
+- **/semana1:**
 
     - Apresentação de disciplina.
     - JDK (Conjunto de ferramentas de software essenciais para o desenvolvimento de aplicativos e componentes usando a linguagem de programação Java), que inclui JRE (Pacote de software que fornece componentes necessários para executar aplicativos Java), javac (Compilador) e outras ferramentas.
     - Java (Linguagem).
 
-- **semana2**
+- **/semana2:**
 
     - Controle de versão.
     - Git (Sistema de controle de versão distribuído usado para rastrear alterações no código-fonte durante o desenvolvimento de software) e GitHub (Plataforma de hospedagem de código-fonte na web que usa Git para controle de versão).
 
-- **semana3**
+- **/semana3:**
 
     - Criação de projetos java.
     - Introdução a linguagem Java:
@@ -58,7 +58,7 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - Constantes.
         - Scanner.
 
-- **semana4**
+- **/semana4:**
 
     - Arrays:
         - Adicionar e substituir elementos.
@@ -83,13 +83,13 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 3 - Compra com descontos.
         - 4 - Validar código.
 
-- **semana5**
+- **/semana5:**
 
     - Exercícios:
         - 1 - Calcular tamanho de áquario e dados relacionados a ele.
         - 2 - Calcular IMC, classificação e peso a ganhar ou perder para atingir o IMC normal.
 
-- **semana6**
+- **/semana6:**
 
     - Métodos:
         - Modificadores de acesso.
@@ -104,31 +104,27 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 1 - Calcular tamanho de áquario e dados relacionados a ele usando métodos. Testar os métodos da classe.
         - 2 - Calcular IMC, classificação e peso a ganhar ou perder para atingir o IMC normal usando métodos. Testar os métodos da classe.
 
-- **semana7**
+- **/semana7:**
 
     - Classe Math.
     - Exercícios:
         - Operações com a classe Math.
         - Operações com Array.
 
-- **semana8 e semana9**
-
-    - nd.
-
-- **semana10**
+- **/semana10:**
 
     - Classes:
         - Criação de classe.
         - Atributos e métodos.
         - Objetos e seus usos.
 
-- **semana11**
+- **/semana11:**
 
     - Exercícios:
         - 1 - Criar classe Aquario, seus atributos, métodos e testes.
         - 2 - Criar classe Pessoa, seus atributos, métodos e testes.
 
-- **semana12**
+- **/semana12:**
 
     - Classe - Métodos construtores.
     - Exercícios:
@@ -136,23 +132,15 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 2 - Criar classe Conta, seus atributos, métodos, construtor e testes.
         - 3 - Criar classe Pessoa, seus atributos, métodos, construtor e testes.
 
-- **semana13**
-
-    - nd.
-
-- **semana14**
+- **/semana14:**
 
     - Classe - getters e setters
     - Exercícios:
         - 1 - Criar classe Aquario, seus atributos, métodos, construtor, setter, getters e testes.
         - 2 - Criar classe Conta, seus atributos, métodos, construtor, setter, getters e testes.
         - 3 - Criar classe Pessoa, seus atributos, métodos, construtor, setter, getters e testes.
-     
-- **semana15 e semana16**
 
-    - nd.
-
-- **semana17**
+- **/semana17:**
 
     - Listas:
         - Adicionar, remover e substituir elementos.
@@ -164,22 +152,18 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - Classe abstrata.
         - Extends.
 
-- **semana18 e semana19**
-
-    - nd.
-
-- **semana20**
+- **/semana20:**
 
     - Prática Orientação a Objeto - Sistema de questões de uma prova.
 
-- **semana21**
+- **/semana21:**
 
     - Interface:
         - Conceito.
         - Implementação.
         - Override.
 
-- **semana22**
+- **/semana22:**
 
     - Conexão a um banco de dados:
         - Criar e fechar conexão.
