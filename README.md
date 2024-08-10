@@ -4,25 +4,25 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
 
 ## Estruturação do repositório
 
-- /.vscode:
-    - settings.json - Configuração da aplicação.
+- **/.vscode:**
+    - `settings.json` - Configuração da aplicação.
 
-- /bin:
+- **/bin:**
     - Arquivos executáveis gerados a partir do código-fonte.
 
-- /lib:
+- **/lib:**
     - Bibliotecas usadas pelos códigos do repositório:
-        - junit-platform-console-standalone-1.9.2.jar - Utilizada para executar testes JUnit em aplicações Java.
-        - mysql-connector-j-8.1.0.jar - Driver JDBC para conectar aplicações Java a banco de dados MySQL.
+        - `junit-platform-console-standalone-1.9.2.jar` - Utilizada para executar testes JUnit em aplicações Java.
+        - `mysql-connector-j-8.1.0.jar` - Driver JDBC para conectar aplicações Java a banco de dados MySQL.
 
-- /src:
+- **/src:**
     - Código-fonte.
 
-- .gitignore:
+- **.gitignore:**
     - Arquivos e diretórios ignorados pelo controle de versão:
         - /bin.
 
-- README.md:
+- **README.md:**
     - Descrição do repositório:
         - Motivo.
         - Estruturação do repositório.
@@ -32,18 +32,18 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
 
 ## Conteúdos - /src
 
-- semana1
+- **semana1**
 
     - Apresentação de disciplina.
     - JDK (Conjunto de ferramentas de software essenciais para o desenvolvimento de aplicativos e componentes usando a linguagem de programação Java), que inclui JRE (Pacote de software que fornece componentes necessários para executar aplicativos Java), javac (Compilador) e outras ferramentas.
     - Java (Linguagem).
 
-- semana2
+- **semana2**
 
     - Controle de versão.
     - Git (Sistema de controle de versão distribuído usado para rastrear alterações no código-fonte durante o desenvolvimento de software) e GitHub (Plataforma de hospedagem de código-fonte na web que usa Git para controle de versão).
 
-- semana3
+- **semana3**
 
     - Criação de projetos java.
     - Introdução a linguagem Java:
@@ -58,7 +58,7 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - Constantes.
         - Scanner.
 
-- semana4
+- **semana4**
 
     - Arrays:
         - Adicionar e substituir elementos.
@@ -83,13 +83,13 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 3 - Compra com descontos.
         - 4 - Validar código.
 
-- semana5
+- **semana5**
 
     - Exercícios:
         - 1 - Calcular tamanho de áquario e dados relacionados a ele.
         - 2 - Calcular IMC, classificação e peso a ganhar ou perder para atingir o IMC normal.
 
-- semana6
+- **semana6**
 
     - Métodos:
         - Modificadores de acesso.
@@ -104,31 +104,31 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 1 - Calcular tamanho de áquario e dados relacionados a ele usando métodos. Testar os métodos da classe.
         - 2 - Calcular IMC, classificação e peso a ganhar ou perder para atingir o IMC normal usando métodos. Testar os métodos da classe.
 
-- semana7
+- **semana7**
 
     - Classe Math.
     - Exercícios:
         - Operações com a classe Math.
         - Operações com Array.
 
-- semana8 e semana9
+- **semana8 e semana9**
 
     - nd.
 
-- semana10
+- **semana10**
 
     - Classes:
         - Criação de classe.
         - Atributos e métodos.
         - Objetos e seus usos.
 
-- semana11
+- **semana11**
 
     - Exercícios:
         - 1 - Criar classe Aquario, seus atributos, métodos e testes.
         - 2 - Criar classe Pessoa, seus atributos, métodos e testes.
 
-- semana12
+- **semana12**
 
     - Classe - Métodos construtores.
     - Exercícios:
@@ -136,11 +136,11 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 2 - Criar classe Conta, seus atributos, métodos, construtor e testes.
         - 3 - Criar classe Pessoa, seus atributos, métodos, construtor e testes.
 
-- semana13
+- **semana13**
 
     - nd.
 
-- semana14
+- **semana14**
 
     - Classe - getters e setters
     - Exercícios:
@@ -148,11 +148,11 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - 2 - Criar classe Conta, seus atributos, métodos, construtor, setter, getters e testes.
         - 3 - Criar classe Pessoa, seus atributos, métodos, construtor, setter, getters e testes.
      
-- semana15 e semana16
+- **semana15 e semana16**
 
     - nd.
 
-- semana17
+- **semana17**
 
     - Listas:
         - Adicionar, remover e substituir elementos.
@@ -164,22 +164,22 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
         - Classe abstrata.
         - Extends.
 
-- semana18 e semana19
+- **semana18 e semana19**
 
     - nd.
 
-- semana20
+- **semana20**
 
     - Prática Orientação a Objeto - Sistema de questões de uma prova.
 
-- semana21
+- **semana21**
 
     - Interface:
         - Conceito.
         - Implementação.
         - Override.
 
-- semana22
+- **semana22**
 
     - Conexão a um banco de dados:
         - Criar e fechar conexão.
@@ -195,13 +195,13 @@ Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do
 
 ## Observações
 
-Este repositório contém o conteúdo necessário para aprender a programar em Java e desenvolver uma aplicação desktop simples, utilizando uma aplicação e um banco de dados. Tudo o que é necessário para criar esse tipo de projeto está bem explicado e organizado, como mostrado na seção "Conteúdos" acima. Conceitos e funcionalidades são aprofundados nos próprios arquivos .java, com comentários que explicam processos e métodos importantes.
+Este repositório contém o conteúdo necessário para aprender a programar em Java e desenvolver uma aplicação desktop simples, utilizando uma aplicação e um banco de dados. Tudo o que é necessário para criar esse tipo de projeto está bem explicado e organizado, como mostrado na seção "Conteúdos" acima. Conceitos e funcionalidades são aprofundados nos próprios arquivos .java, com comentários que explicam processos e métodos importantes. 
 
 ## Contato
 
-Caso tenha dúvidas, entrar em contato:
+Caso tenha dúvidas, entre em contato:
 
 - Nome: Paulo Henrique Barbosa do Prado Pereira
 - E-mail: pereirapaulo436@gmail.com
-- LinkedIn: Paulo Barbosa (https://www.linkedin.com/in/paulo-barbosa-61a860303/)
-- GitHub: 2007paulohenrique (https://github.com/2007paulohenrique)
+- LinkedIn: [Paulo Barbosa](https://www.linkedin.com/in/paulo-barbosa-61a860303/)
+- GitHub: [2007paulohenrique](https://github.com/2007paulohenrique)
