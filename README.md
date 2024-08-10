@@ -1,6 +1,6 @@
 # Aulas de lp1
 
-Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do curso de Informática do Instituto Federal de São Paulo. O LP1-231 foca exclusivamente no estudo da programação em Java, abordando desde os conceitos básicos da linguagem até a manipulação de dados em um banco de dados, utilizando métodos e outras funções relevantes na programação em Java.
+Este repositório é destinado aos conteúdos de Linguagem de Programação 1 do curso de Informática do Instituto Federal de São Paulo. O lp1-231-Estudo Java foca exclusivamente no estudo da programação em Java, abordando desde os conceitos básicos da linguagem até a manipulação de dados em um banco de dados, utilizando métodos e outras funções relevantes na programação em Java.
 
 ## Estruturação do repositório
 
